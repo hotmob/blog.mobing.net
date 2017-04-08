@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://blog.mobing.com/content/2017-04-07-nexus6p-decrypted-boot-up/index.html">
 <meta property="og:site_name" content="Mob's Blog">
 <meta property="og:description" content="最近手里的6p使用FlashFire更新7.1.2又失败了，没办法，只能手动更新，并一起整理下更新流程的心得，也算以备后用。">
-<meta property="og:updated_time" content="2017-04-08T05:24:19.000Z">
+<meta property="og:updated_time" content="2017-04-08T16:29:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nexus6p Decrypted">
 <meta name="twitter:description" content="最近手里的6p使用FlashFire更新7.1.2又失败了，没办法，只能手动更新，并一起整理下更新流程的心得，也算以备后用。">
@@ -184,7 +184,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">当云淡风轻时</p>
+        <p class="site-subtitle">浮生若梦，为欢几何</p>
       
   </div>
 
@@ -232,14 +232,6 @@
           <a href="/tags" rel="section">
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-            关于
           </a>
         </li>
       
@@ -313,7 +305,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mob">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -415,14 +407,72 @@
       
         <p>最近手里的6p使用<a href="https://hexo.io/" target="_blank" rel="external">FlashFire</a>更新7.1.2又失败了，没办法，只能手动更新，并一起整理下更新流程的心得，也算以备后用。<br><a id="more"></a></p>
 <p>至于我什么要root我就不多解释了，该教程可以用在任意Google Nexus Android Nougat设备上，前提要用对应你nexus的文件。</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="相关下载"><a href="#相关下载" class="headerlink" title="相关下载"></a>相关下载</h3><p><a href="https://developers.google.com/android/images" target="_blank" rel="external">Factory Images for Nexus</a></p>
+<ul>
+<li>当前版本7.1.2，请在页面中寻找 “angler” for Nexus 6P 的最新版下载</li>
+</ul>
+<p><a href="https://developers.google.com/android/images" target="_blank" rel="external">TWRP for Angler</a></p>
+<ul>
+<li>当前版本3.1.0.0</li>
+</ul>
+<p><a href="http://www.supersu.com/download" target="_blank" rel="external">SuperSU</a></p>
+<ul>
+<li>当前版本2.7.9</li>
+</ul>
+<h3 id="首次破解"><a href="#首次破解" class="headerlink" title="首次破解"></a>首次破解</h3><p>第一次root Android设备时请首先下载Android platform-tools工具包，并解压到你能找到它的位置，将Nexus6P的镜像文件[Factory Images for Angler 和 TWRP Recovery镜像文件放在platform-tools文件夹内，然后在platform-tools文件夹内空白处按住键盘Shilt键+鼠标右键，并选择“在此处打开命令窗口”注意！（路径不要带有中文），并在手机上按如下步骤操作：</p>
+<blockquote>
+<p>1、打开手机 设置-关于手机-点击版本号7次，以打开“开发者选项”<br>2、返回上一页，打开开发者选项-&gt;打开USB 调试</p>
+</blockquote>
+<p>用USB-A数据线连接手机，然后在DOS窗口输入下列命令：</p>
+<blockquote>
+<p>进入bootloader界面（也可以开机时同时按住电源键&amp;音量减键）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb reboot bootloader</div></pre></td></tr></table></figure>
+<blockquote>
+<p>列出已连接的设备</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot devices</div></pre></td></tr></table></figure>
+<blockquote>
+<p>刷入镜像文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash boot Modified-NPD90G-boot-angler.img</div></pre></td></tr></table></figure>
+<blockquote>
+<p>刷入TWRP Recovery</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash recovery twrp-3.0.2-0-angler.img</div></pre></td></tr></table></figure>
+<blockquote>
+<p>格式化用户数据与缓存</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ fastboot format userdata</div><div class="line">$ fastboot format cache</div></pre></td></tr></table></figure>
+<p>完成以上步骤后，按音量键导航到Recovery mode，按电源键以确认。然后手机将会重启到TWRP Recovery,然后按以下步骤执行：</p>
+<blockquote>
+<p>1、选择Wipe<br>2、选择Format Data<br>3、键入yes 并回车（等待完成）<br>4、按Home键-&gt;选择Reboot-&gt;Recovery（手机将会再次重启到TWRP Recovery）<br>5、将下载的SuperSU复制到“\计算机\Nexus 6P\Internal Storage\”<br>6、选择Install-&gt;UPDATE-SuperSU-v2.76-20160630161323.zip（并安装）<br>7、Reboot System（等待完成重启）</p>
+</blockquote>
+<p>至此，root完成。</p>
+<h3 id="后续更新"><a href="#后续更新" class="headerlink" title="后续更新"></a>后续更新</h3><p>root后手机无法正常使用OTA更新，但大部分的安全更新可以使用<a href="https://hexo.io/" target="_blank" rel="external">FlashFire</a>一键完成，少量会出问题的时候就需要刷回官方的镜像，重置SuperSU。</p>
+<p>使用上述步骤，进入bootloader界面解压Factory Images</p>
+<blockquote>
+<p>刷入官方原版 bootloader</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash bootloader bootloader-angler-angler-03.62.img</div></pre></td></tr></table></figure>
+<p>命令执行完之后会看到OK字样，如果你发现有FAILED字样，请根据上面解锁篇的驱动安装部分重装GOOGLE原装驱动。</p>
+<p>看到OK之后，表示bootloader这个模块已更新完成，这时候我们需要重启一次bootloader，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot reboot-bootloader</div></pre></td></tr></table></figure>
+<p>手机会自动重启到已更新好的bootloader下面。<br>接着刷入radio</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash radio radio-angler-angler-03.78.img</div></pre></td></tr></table></figure>
+<p>看到OK之后，表示radio这个模块已更新完成，这时候我们需要再重启一次bootloader，重复上面命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot reboot-bootloader</div></pre></td></tr></table></figure>
+<p>手机会再次自动重启到bootloader下面</p>
+<p>这两步之后，我们不需要重启bootloader了，可以开始依次更新boot、recovery、system、userdata、cache和vendor文件</p>
+<p>命令行的输入分别是，每输入一个，都要回车等待刷新完成显示OK再执行下一步输入另外一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ fastboot erase cache</div><div class="line">$ fastboot flash boot boot.img</div><div class="line">$ fastboot flash recovery recovery.img</div><div class="line">$ fastboot flash system system.img</div></pre></td></tr></table></figure>
+<p>这里是关键一步，如果不想重装的话，一定要跳过这一步，不要执行，这样相当于无损数据升级</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash userdata userdata.img</div></pre></td></tr></table></figure>
+<p>继续</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ fastboot flash cache cache.img</div><div class="line">$ fastboot flash vendor vendor.img</div></pre></td></tr></table></figure>
+<p>以上命令行全部执行完毕，确认每一步都显示OK之后，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastboot reboot</div></pre></td></tr></table></figure>
+<p>现在系统会重启，如果一切正常，很快就进入最新版的原生系统了，恭喜你，到此系统重刷或升级已经完成，可以愉快的使用了。</p>
 
       
     </div>
@@ -471,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/content/2017-03-27-Hello-Local-Hexo/" rel="next" title="Hello Local Hexo">
-                <i class="fa fa-chevron-left"></i> Hello Local Hexo
+              <a href="/content/2017-03-27-hello-hexo/" rel="next" title="Hello Hexo">
+                <i class="fa fa-chevron-left"></i> Hello Hexo
               </a>
             
           </div>
@@ -569,11 +619,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/avatar.jpg"
                alt="Mob" />
           <p class="site-author-name" itemprop="name">Mob</p>
            
-              <p class="site-description motion-element" itemprop="description">当你的才华还撑不起你的野心时，你就应该静下心来学习。</p>
+              <p class="site-description motion-element" itemprop="description">给自己一份自信，不卑不亢；给自己一份洒脱，悠然前行。</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -581,7 +631,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -592,7 +642,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -603,7 +653,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -621,6 +671,35 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hotmob" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hotmob" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/ammob" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
 
@@ -645,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关下载"><span class="nav-number">1.</span> <span class="nav-text">相关下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首次破解"><span class="nav-number">2.</span> <span class="nav-text">首次破解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后续更新"><span class="nav-number">3.</span> <span class="nav-text">后续更新</span></a></li></ol></div>
             
 
           </div>
