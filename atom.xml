@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.mobing.com/"/>
-  <updated>2017-04-08T16:29:31.000Z</updated>
+  <updated>2017-04-10T04:11:57.000Z</updated>
   <id>http://blog.mobing.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Github上自动部署Hexo</title>
+    <link href="http://blog.mobing.com/content/2017-04-10-hexo-github-deploy/"/>
+    <id>http://blog.mobing.com/content/2017-04-10-hexo-github-deploy/</id>
+    <published>2017-04-10T01:54:03.000Z</published>
+    <updated>2017-04-10T04:11:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####启用要构建的项目</p>
+<p>首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目</p>
+<p>使用Github账号登录<a href="https://travis-ci.org" target="_blank" rel="external">Travis CI</a>官网.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####启用要构建的项目&lt;/p&gt;
+&lt;p&gt;首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目&lt;/p&gt;
+&lt;p&gt;使用Github账号登录&lt;a href=&quot;https://travis-ci.org&quot; tar
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://blog.mobing.com/categories/hexo/"/>
+    
+    
+      <category term="教程" scheme="http://blog.mobing.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Nexus6p Decrypted</title>
@@ -116,9 +143,9 @@
     <link href="http://blog.mobing.com/content/2017-03-27-hello-hexo/"/>
     <id>http://blog.mobing.com/content/2017-03-27-hello-hexo/</id>
     <published>2017-03-27T03:19:10.000Z</published>
-    <updated>2017-04-08T17:29:37.000Z</updated>
+    <updated>2017-04-10T01:55:49.000Z</updated>
     
-    <content type="html"><![CDATA[<p>一见钟情是一种缘份，简单地说，就是你看见对方的第一眼，你就喜欢上对方，我与Hexo正是如此，见她的第一眼，便被她的优雅与干净所吸引。<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>一见钟情是一种缘份，简单地说，就是你看见对方的第一眼，你就喜欢上对方，我与Hexo正是如此，见她的第一眼，便被她的优雅与干净所吸引。<br><a id="more"></a><br>使用 Hexo 写博客是十分惬意的事。唯一有点不爽，就是每次修改后都要重新生成并部署到 Github 上。下篇文章我们讨论下利用 Travis CI 来完成自动部署，解决心中最后一处搔痒。</p>
 ]]></content>
     
     <summary type="html">
@@ -139,9 +166,9 @@
     <link href="http://blog.mobing.com/content/2017-02-21-gumballs-dungeons-strategy/"/>
     <id>http://blog.mobing.com/content/2017-02-21-gumballs-dungeons-strategy/</id>
     <published>2017-02-21T14:17:13.000Z</published>
-    <updated>2017-04-08T18:09:02.000Z</updated>
+    <updated>2017-04-10T01:58:53.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="培养攻略"><a href="#培养攻略" class="headerlink" title="培养攻略"></a>培养攻略</h2><p>佐罗(出战)+虫族女王+斯巴达<br>神龙(出战)+熊猫+塔罗<br>冒险者(出战)+海贼王+雅典娜<br>神灯(出战)+太阳花+终结者<br>信长(出战)+十字军+萨拉丁<br>机帝(出战)+任意卡拉斯启示</p>
+    <content type="html"><![CDATA[<p>佐罗(出战)+虫族女王+斯巴达（异界+毁灭+传奇）<br>神龙(出战)+熊猫+塔罗<br>冒险者(出战)+海贼王+雅典娜<br>神灯(出战)+太阳花+终结者<br>信长(出战)+十字军+萨拉丁<br>机帝(出战)+任意卡拉斯启示<br><a id="more"></a></p>
 <h2 id="刷图攻略"><a href="#刷图攻略" class="headerlink" title="刷图攻略"></a>刷图攻略</h2><h3 id="冒险者之森"><a href="#冒险者之森" class="headerlink" title="冒险者之森"></a>冒险者之森</h3><h4 id="推荐组合"><a href="#推荐组合" class="headerlink" title="推荐组合"></a>推荐组合</h4><h5 id="套路一"><a href="#套路一" class="headerlink" title="套路一"></a>套路一</h5><p>佐罗+斯巴达+女王（异界+毁灭+传奇）</p>
 <h5 id="套路二"><a href="#套路二" class="headerlink" title="套路二"></a>套路二</h5><p>冒险者+海贼王+虫族女王（异界+毁灭+传奇）</p>
 <h4 id="要点纪要"><a href="#要点纪要" class="headerlink" title="要点纪要"></a>要点纪要</h4><h5 id="隐藏英雄"><a href="#隐藏英雄" class="headerlink" title="隐藏英雄"></a>隐藏英雄</h5><p>格格巫尸体有概率出蓝精灵药剂或者格格巫法袍，没出法袍就可以退了重来了。</p>
@@ -159,7 +186,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;培养攻略&quot;&gt;&lt;a href=&quot;#培养攻略&quot; class=&quot;headerlink&quot; title=&quot;培养攻略&quot;&gt;&lt;/a&gt;培养攻略&lt;/h2&gt;&lt;p&gt;佐罗(出战)+虫族女王+斯巴达&lt;br&gt;神龙(出战)+熊猫+塔罗&lt;br&gt;冒险者(出战)+海贼王+雅典娜&lt;br&gt;神灯(出战)+太
+      &lt;p&gt;佐罗(出战)+虫族女王+斯巴达（异界+毁灭+传奇）&lt;br&gt;神龙(出战)+熊猫+塔罗&lt;br&gt;冒险者(出战)+海贼王+雅典娜&lt;br&gt;神灯(出战)+太阳花+终结者&lt;br&gt;信长(出战)+十字军+萨拉丁&lt;br&gt;机帝(出战)+任意卡拉斯启示&lt;br&gt;
     
     </summary>
     
@@ -175,9 +202,9 @@
     <link href="http://blog.mobing.com/content/2008-01-01-hello-world/"/>
     <id>http://blog.mobing.com/content/2008-01-01-hello-world/</id>
     <published>2007-12-31T16:00:00.000Z</published>
-    <updated>2017-04-08T09:25:41.000Z</updated>
+    <updated>2017-04-10T04:03:28.000Z</updated>
     
-    <content type="html"><![CDATA[<p>自从Windows Space关闭之后就没有系统的写过博客了，更多的转向了印象笔记之类的知识管理工具，近年来深感罪恶，正巧看到了小巧秀气的hexo，遂发博之心大开，希望可以继续强健自己的心智，为今后天下开太平！<br><a id="more"></a><br><img src="2017-04-08-DSCF8175.JPG" alt="DSCF8175"></p>
+    <content type="html"><![CDATA[<p>自从Windows Space关闭之后就没有系统的写过博客了，更多的转向了印象笔记之类的知识管理工具，近年来深感罪恶，正巧看到了小巧秀气的hexo，遂发博之心大开，希望可以继续强健自己的心智，为今后天下开太平！<br><a id="more"></a><br><img src="http://onpmwsyvd.bkt.clouddn.com/2017-04-08-DSCF8175.JPG" alt="DSCF8175"></p>
 ]]></content>
     
     <summary type="html">
