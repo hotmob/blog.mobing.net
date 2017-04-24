@@ -1,0 +1,914 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="nsaODT22DkyPnvKcvjnvA7hdNmyAEqH_on5Zlbsp_9M" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="神经网络,深度学习,机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mob's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
+
+人工智能 —— 使用机器诠释的人类智能
+机器学习 —— 实现人工智能的一种方式
+深度学习 —— 实现机器学习的一种技术
+
+现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习、深度学习与人工智能的区别">
+<meta property="og:url" content="http://blog.mobing.com/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/index.html">
+<meta property="og:site_name" content="Mob's Blog">
+<meta property="og:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
+
+人工智能 —— 使用机器诠释的人类智能
+机器学习 —— 实现人工智能的一种方式
+深度学习 —— 实现机器学习的一种技术
+
+现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta property="og:updated_time" content="2017-04-24T02:58:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习、深度学习与人工智能的区别">
+<meta name="twitter:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
+
+人工智能 —— 使用机器诠释的人类智能
+机器学习 —— 实现人工智能的一种方式
+深度学习 —— 实现机器学习的一种技术
+
+现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'XGFEWQLHLR',
+      apiKey: 'e26c21e3e7ef84490b6fb76e1cd8a8db',
+      indexName: 'hexo.me',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mobing.com/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/"/>
+
+
+
+
+
+  <title> 机器学习、深度学习与人工智能的区别 | Mob's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-27538548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mob's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">浮生若梦，为欢几何</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.mobing.com/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mob">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mob's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习、深度学习与人工智能的区别
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T21:54:03+08:00">
+                2017-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/人工智能/" itemprop="url" rel="index">
+                    <span itemprop="name">人工智能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：</p>
+<ul>
+<li>人工智能 —— 使用机器诠释的人类智能</li>
+<li>机器学习 —— 实现人工智能的一种方式</li>
+<li>深度学习 —— 实现机器学习的一种技术</li>
+</ul>
+<p>现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让机器像人类一样思考和推理，基本上而言是指通过人工的方法（所以也叫人工智能）来代替人类天生的自然智能——涉及到的任务从简单到复杂都有。比如，无人驾驶汽车（目前）正在模仿人类的驾驶，驾驶条件也是人类在自然情况下会遇到的——我说「目前」是因为也许未来人类将很少能够直接驾驶机器，「驾驶（drive）」这个词本身都可能会改变含义。<br><a id="more"></a></p>
+<h2 id="机器学习-VS-深度学习"><a href="#机器学习-VS-深度学习" class="headerlink" title="机器学习 VS 深度学习"></a>机器学习 VS 深度学习</h2><p>在深入探讨数据学习与机器学习之间的区别前，我们先简单讨论下机器学习与深度学习的区别。机器学习一系列在数据集上进行训练的算法，来做出预测或采取形同从而对系统进行优化。例如，基于历史数据，监督分类算法就被用来分类潜在的客户或贷款意向。根据给定任务的不同（例如，监督式聚类），用到的技术也不同：朴素贝叶斯、支持向量机、神经网络、ensembles、关联规则、决策树、逻辑回归或多种方法之间的结合。</p>
+<p>这些都是数据科学的分支。当这些算法被用于自动化的时候，就像在自动飞行或无人驾驶汽车中，它被称为人工智能，更具体的细说，就是深度学习。如果数据收集自传感器，通过互联网进行传输，那就是机器学习或数据科学或深度学习应用到了 IoT 上。</p>
+<p>有些人对深度学习有不同的定义。他们认为深度学习是带有更多层的神经网络（神经网络是一种机器学习技术）。深度学习与机器学习的区别这一问题在 Quora 上也被问到过，下面对此有详细的解释：</p>
+<ul>
+<li>人工智能是计算机科学的一个子领域，创造于 20 世纪 60 年代，它涉及到解决对人类而言简单却对计算机很难的任务。详细来说，所谓的强人工智能系统应该是能做人类所能做的任何事。这是相当通用的，包含所有的任务，比如规划、到处移动、识别物体与声音、说话、翻译、完成社会或商业事务、创造性的工作（绘画、作诗）等。</li>
+<li>自然语言处理只是人工智能与语言有关的一部分。</li>
+<li>机器学习被认为是人工智能的一方面：给定一些可用离散术语（例如，在一些行为中，那个行为是正确的）描述的人工智能问题，并给出关于这个世界的大量信息，在没有程序员进行编程的情况下弄清楚「正确」的行为。典型的是，需要一些外部流程判断行为是否正确。在数学术语中，也就是函数：馈入输入，产生正确的输出。所以整个问题就是以自动化的方式建立该数学函数的模型。在二者进行区分时：如果我写出的程序聪明到表现出人类行为，它就是人工智能。但如果它的参数不是自动从数据进行学习，它就不是机器学习。</li>
+<li>深度学习是如今非常流行的一种机器学习。它涉及到一种特殊类型的数学模型，可认为它是特定类型的简单模块的结合（函数结合），这些模块可被调整从而更好的预测最终输出。</li>
+</ul>
+<h3 id="机器学习-VS-统计学"><a href="#机器学习-VS-统计学" class="headerlink" title="机器学习 VS 统计学"></a>机器学习 VS 统计学</h3><p>《Machine Learning Vs. Statistics》这篇文章试图解答这个问题。这篇文章的作者认为统计学是带有置信区间（confidence intervals）的机器学习，是为了预测或估计数量。但我不同意，我曾建立过不需要任何数学或统计知识的工程友好的置信区间。</p>
+<h3 id="机器学习-VS-数据科学"><a href="#机器学习-VS-数据科学" class="headerlink" title="机器学习 VS 数据科学"></a>机器学习 VS 数据科学</h3><p>机器学习和统计学都是数据科学的一部分。机器学习中的学习一词表示算法依赖于一些数据（被用作训练集），来调整模型或算法的参数。这包含了许多的技术，比如回归、朴素贝叶斯或监督聚类。但不是所有的技术都适合机器学习。例如有一种统计和数据科学技术就不适合——无监督聚类，该技术是在没有任何先验知识或训练集的情况下检测 cluster 和 cluster 结构，从而帮助分类算法。这种情况需要人来标记 cluster。一些技术是混合的，比如半监督分类。一些模式检测或密度评估技术适合机器学习。</p>
+<p>数据科学要比机器学习广泛。数据科学中的数据可能并非来自机器或机器处理（调查数据可能就是手动收集，临床试验涉及到专业类型的小数据），就像我刚才所说的，它可能与「学习」没有任何关系。但主要的区别在于数据科学覆盖整个数据处理，并非只是算法的或统计类分支。细说之，数据科学也包括：</p>
+<ul>
+<li>数据集成（data integration）</li>
+<li>分布式架构（distributed architecture）</li>
+<li>自动机器学习（automating machine learning）</li>
+<li>数据可视化（data visualization）</li>
+<li>dashboards 和 BI</li>
+<li>数据工程（data engineering）</li>
+<li>产品模式中的部署（deployment in production mode）</li>
+<li>自动的、数据驱动的决策（automated, data-driven decisions）</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/神经网络/" rel="tag"># 神经网络</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/content/methodology-internet-innovation-2017-04-17/" rel="next" title="互联网产品创新四步法">
+                <i class="fa fa-chevron-left"></i> 互联网产品创新四步法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/content/artificial-intelligence/machine-learning-explain-2017-04-24/" rel="prev" title="漫话浅谈-机器学习">
+                漫话浅谈-机器学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.jpg"
+               alt="Mob" />
+          <p class="site-author-name" itemprop="name">Mob</p>
+           
+              <p class="site-description motion-element" itemprop="description">给自己一份自信，不卑不亢；给自己一份洒脱，悠然前行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hotmob" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hotmob" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/ammob" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习-VS-深度学习"><span class="nav-number">1.</span> <span class="nav-text">机器学习 VS 深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习-VS-统计学"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习 VS 统计学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习-VS-数据科学"><span class="nav-number">1.2.</span> <span class="nav-text">机器学习 VS 数据科学</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mob</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hotmob.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://blog.mobing.com/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/';
+          this.page.identifier = 'content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/';
+          this.page.title = '机器学习、深度学习与人工智能的区别';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hotmob.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

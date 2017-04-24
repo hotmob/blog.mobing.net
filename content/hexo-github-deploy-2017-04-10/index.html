@@ -91,22 +91,22 @@
 
 
 
-<meta name="description" content="####启用要构建的项目
-首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目
-使用Github账号登录Travis CI官网.">
+<meta name="description" content="二级域名在使用github部署的时候，如果选择了自定义域名，正常会导致每次部署域名就要重新设置的麻烦。其实这主要是没有在部署时在代码中指定CNAME，只要在hexo的部署文件夹下，即 /source 下放入CNAME文件（无后缀），并在文件中填写自定义域名即可，如：
+1blog.mobing.net
+自动构建首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Github上自动部署Hexo">
 <meta property="og:url" content="http://blog.mobing.com/content/hexo-github-deploy-2017-04-10/index.html">
 <meta property="og:site_name" content="Mob's Blog">
-<meta property="og:description" content="####启用要构建的项目
-首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目
-使用Github账号登录Travis CI官网.">
-<meta property="og:updated_time" content="2017-04-10T04:11:57.000Z">
+<meta property="og:description" content="二级域名在使用github部署的时候，如果选择了自定义域名，正常会导致每次部署域名就要重新设置的麻烦。其实这主要是没有在部署时在代码中指定CNAME，只要在hexo的部署文件夹下，即 /source 下放入CNAME文件（无后缀），并在文件中填写自定义域名即可，如：
+1blog.mobing.net
+自动构建首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持">
+<meta property="og:updated_time" content="2017-04-24T03:03:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Github上自动部署Hexo">
-<meta name="twitter:description" content="####启用要构建的项目
-首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目
-使用Github账号登录Travis CI官网.">
+<meta name="twitter:description" content="二级域名在使用github部署的时候，如果选择了自定义域名，正常会导致每次部署域名就要重新设置的麻烦。其实这主要是没有在部署时在代码中指定CNAME，只要在hexo的部署文件夹下，即 /source 下放入CNAME文件（无后缀），并在文件中填写自定义域名即可，如：
+1blog.mobing.net
+自动构建首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持">
 
 
 
@@ -365,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -411,8 +411,9 @@
       
 
       
-        <p>####启用要构建的项目</p>
-<p>首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目</p>
+        <h3 id="二级域名"><a href="#二级域名" class="headerlink" title="二级域名"></a>二级域名</h3><p>在使用github部署的时候，如果选择了自定义域名，正常会导致每次部署域名就要重新设置的麻烦。<br>其实这主要是没有在部署时在代码中指定CNAME，只要在hexo的部署文件夹下，即 /source 下放入CNAME文件（无后缀），并在文件中填写自定义域名即可，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blog.mobing.net</div></pre></td></tr></table></figure>
+<h3 id="自动构建"><a href="#自动构建" class="headerlink" title="自动构建"></a>自动构建</h3><p>首先如果你要使用Travis CI，你必须要GIthub账号（好像Travis CI只支持构建github的项目）和一个项目</p>
 <p>使用Github账号登录<a href="https://travis-ci.org" target="_blank" rel="external">Travis CI</a>官网.</p>
 
       
@@ -545,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/avatar.jpg"
@@ -561,7 +571,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -572,7 +582,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -583,7 +593,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -644,6 +654,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二级域名"><span class="nav-number">1.</span> <span class="nav-text">二级域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动构建"><span class="nav-number">2.</span> <span class="nav-text">自动构建</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
