@@ -97,10 +97,16 @@
 <meta property="og:url" content="http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network-2017-04-24/index.html">
 <meta property="og:site_name" content="Mob's Blog">
 <meta property="og:description" content="随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。">
-<meta property="og:updated_time" content="2017-04-24T03:42:39.000Z">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/001.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/002.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/003.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/004.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/005.png">
+<meta property="og:updated_time" content="2017-04-26T01:40:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习与神经网络">
 <meta name="twitter:description" content="随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。">
+<meta name="twitter:image" content="http://blog.mobing.com/images/artificial-intelligence/001.png">
 
 
 
@@ -406,8 +412,65 @@
 
       
         <p>随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。<br><a id="more"></a></p>
-<p>如果你真正对追求机器学习这一门学科感兴趣，你必需要对深度学习网络有透彻的理解。大部分机器学习算法在处理具有多个变量的数据集时往往会有准确度下降的问题，而深度学习模型则能在这些情形中产生「奇迹」。因此，了解深度学习模型的工作方式对我们来说是非常重要的。</p>
-<p>在这篇文章中，我会解释用于深度学习的一些核心概念，即哪些类型的后台的计算导致了模型准确度的提升。此外，我也会分享各种建模的技巧，并简单论述一下神经网络的发展历史。</p>
+<h2 id="神经网络的历史"><a href="#神经网络的历史" class="headerlink" title="神经网络的历史"></a>神经网络的历史</h2><p>神经网络是当今深度学习领域技术突破的基石。神经网络可被看作是一种大规模并行的简单处理单元，它能够存储知识（knowledge）并使用这种知识来做出预测。</p>
+<p>神经网络需要通过学习过程来从其环境中获取知识，这个过程模拟了生物大脑的工作方式。然后，被称为突触权重（synaptic weight）的干涉连接强度可被用于存储获取到的知识。在学习过程中，神经网络的突触权重会以一种有序的方式进行修改，从而实现所需的目标。1950 年，神经心理学家 Karl Lashley 发表了一篇将大脑视作分布式系统的论文。</p>
+<p>人们将神经网络与人脑进行比较的另一个原因是它们的运行方式都像是非线性的并行信息处理系统，可以执行模式识别和感知这样的计算。因此，这些网络在语音、音频和图像识别等本质上是非线性的输入/信号上可以具有非常良好的表现。</p>
+<p>神经网络先驱 McCulloch 和 Pitts 在 1943 年发表了一篇对一个有两个输入和一个输出的模型的研究文章。该模型具有以下特性：</p>
+<p>要一个神经元被激活，必需满足以下条件：</p>
+<ul>
+<li>其中一个输入是激活的</li>
+<li>每个输入的权重相等</li>
+<li>该模型的输出是二元的</li>
+</ul>
+<p>通过对输入值求和得到的输出要么是 1，要么是 0；所以这样的计算存在一个特定的阈值。</p>
+<p>Hebb 在其 1949 年的著作《The Organization of Behaviour（行为组织）》中第一次提出了这一思想：为了应对任务的变化，大脑中的连接会不断发生改变。这样的规则意味着两个神经元之间的连接在这同一时间内是激活的。这一思想很快就变成了开发学习的计算模型和自适应系统的灵感来源。</p>
+<p>人工神经网络有能力从被提供的数据中学习，这被称为自适应学习（adaptive learning），而神经网络创造其自己的组织或信息表征的能力则被称为自组织（self-organisation）。</p>
+<p>15 年后，Rosenblatt 于 1958 年开发出了感知器（perceptron），成为了神经元的下一个模型。感知器是最简单的神经网络，能将数据线性地分为两类。后来，他随机地将这些感知器互相连接，并使用了一种试错方法来改变权重以进行学习。</p>
+<p>1969 年，在数学家 Marvin Minsky 和 Seymour Parpert 发表了一篇对感知器的数学分析后，这个方向的研究在接下来的 15 年里陷入了停滞。他们的研究发现感知器无法表征很多重要的问题，比如异或函数（XOR）。其实，那时的计算机还没有足够的处理能力来有效地处理大型神经网络。</p>
+<p>1986 年，Rumelhart、Hinton 和 Williams 报告他们所开发的反向传播（back-propagation）算法能够解决 XOR 这样的问题，并由此开启了第二代神经网络。同一年，Rumelhart 和 McClelland 编辑的两卷知名著作《Parallel Distributed Processing: Explorations in the Microstructures of Cognition（并行分布式处理：认知的微结构中的探索）》发表。这本书在反向传播的应用上产生了很大的影响，而反向传播也已经在多层感知器的训练上成为了最为流行的学习算法。</p>
+<h2 id="单层感知器（SLP）"><a href="#单层感知器（SLP）" class="headerlink" title="单层感知器（SLP）"></a>单层感知器（SLP）</h2><p>感知器的最简单形式是在输入和输出之间有一个单层的权重连接。这种形式可被看作是最简单的前馈网络（feed-forward network）。在一个前馈网络中，信息总是向一个方向移动，永不回头。</p>
+<center><img src="/images/artificial-intelligence/001.png" alt="图1"></center>
+
+<p>上图就是一个单层感知器，可用来更轻松地理解前面所解释的多层感知器的概念基础。单层感知器表示了网络中一个层和其它层之间的连接的 m 权重，该权重可被看作是一组突触或连接链。这个参数表示了每个特征 xj 的重要性。下面是输入乘以它们各自的突触连接这一功能的加法器函数：<br>$$ u_{k} = {\sum _ {j=1}^m} w_{kj}x_j $$<br>其偏置 bk 用作对加法器函数 uk 得到 vk 的输出的仿射变换（ affine transformation），其诱导局部域（induced local field）为：<br>$$ v_{k} = u_{k} + b_{k} $$</p>
+<h2 id="多层感知器（MLP）"><a href="#多层感知器（MLP）" class="headerlink" title="多层感知器（MLP）"></a>多层感知器（MLP）</h2><p>多层感知器也被称为前馈神经网络（feed-forward neural network），由每一层都完全连接到下一层的层序列组成。</p>
+<p>一个多层感知器在输入和输出层之间有一个或多个隐藏层，其中每一层都包含多个通过权重链接彼此互连的神经元。输入层中神经元的数量即为数据集中属性的数量，输出层中神经元数量是对数据集的给定类别的数量。</p>
+<center><img src="/images/artificial-intelligence/002.png" alt="图2"></center>
+
+<p>上图是一个至少有三层的多层感知器，其中每一层都和前一层相连。要使这个架构做到深度，我们需要引入多个隐藏层。</p>
+<ul>
+<li>参数的初始化</li>
+</ul>
+<p>在参数的初始化中，权重（weight）和偏置（bias）在确定最终模型的过程中发挥了重要的作用。关于初始化策略的文献资料有很多。</p>
+<p>一个好的随机初始化策略可以避开局部极小值的困境。局部极小值（local minima）问题是指网络在训练过程中受困于错误的表面而不能深入，即使该网络还仍有学习的能力。</p>
+<p>使用不同的初始化策略进行实验已经超出了本文的研究范围。</p>
+<p>初始化策略应该根据所使用的激活函数进行选择。对于双曲正切函数，初始化区间应该为<br>$$ \left\lfloor -\sqrt{\frac 6{fan_{in}+fan_{out}}}, \sqrt{\frac 6{fan_{in}+fan_{out}}} \right\rfloor $$<br>其中 fan in 是第 i-1 层的单元的数量，fan out 是第 i 层的单元的数量。类似地，对于 S 型激活函数，初始化区间应该为<br>$$ \left\lfloor -\sqrt[4]{\frac 6{fan_{in}+fan_{out}}}, \sqrt[4]{\frac 6{fan_{in}+fan_{out}}} \right\rfloor $$<br>这些初始化策略能在网络训练的早期阶段确保信息向上和向后传播。</p>
+<ul>
+<li>激活函数</li>
+</ul>
+<p>激活函数将诱导局部域 v 下的神经元的输出定义为：<br>$$ y_{k} = \varphi(u_{k} + b_{k}) $$<br>其中 \( \varphi( ) \) 是该激活函数。激活函数有很多种，下面给出常用的一些：<br>$$\varphi_{(v)}=\begin{cases} 1\quad if\quad v\ge0 \\ 0\quad if\quad v\lt0 \end{cases} $$</p>
+<center><img src="/images/artificial-intelligence/003.png" alt="激活函数"></center>
+
+<p>1.阈值函数（Threshold Function）</p>
+<p>上图表示该神经元要么是激活的，要么就是非激活的。但是，该函数是不可微分的，这在使用反向传播算法时非常重要（稍后解释）。</p>
+<ol>
+<li>S 型函数（Sigmoid Function）</li>
+</ol>
+<p>和阈值函数一样，S 型函数是一个取值在 0 到 1 之间的逻辑函数，但该激活函数是连续可微的。<br>$$\varphi_{(v)}=\frac{1}{1+exp^{(-av)}} $$<br>其中 α 是该函数的斜率参数（slope parameter）。此外，该函数在本质上是非线性的，这有助于确保权重和偏置中的较小改变能在神经元的输出中产生较大的变化。</p>
+<p>3.双曲正切函数（Hyperbolic Tangent Function）</p>
+<p>φ(v) = tanh (v)</p>
+<p>该函数可让激活函数的取值在 -1 到 +1 之间。</p>
+<p>4.修正线性激活函数（ReLU）</p>
+<p>ReLU 是许多逻辑单元之和的平滑近似，能够产生稀疏的活动向量。下面是该函数的方程式：<br>$$ y=max\left\lbrace\begin{matrix}<br> 0,b+\sum_{i=1}^k {x_i \ast w_i} \\ \end{matrix}\right\rbrace<br>$$</p>
+<p><center><img src="/images/artificial-intelligence/004.png" alt="图3"></center><br>在上图中<br>$$ (softplus \quad f(x)=log(1+e^x) $$<br>是对修正器（rectifier）的平滑逼近</p>
+<ol>
+<li>Maxout 函数</li>
+</ol>
+<p>2013 年，Goodfellow 发现使用了一种新的激活函数的 Maxout 网络是 dropout 的天然搭档。</p>
+<p>Maxout 单元能促进 dropout 的优化以及提升 dropout 的快速近似模型平均技术（fast approximate model averaging technique）的准确度。单个 Maxout 单元可被理解为是对一个任意凸函数的片（piece）形式的线性近似。</p>
+<p>Maxout 网络不仅能学习隐藏单元之间的关系，还能学习每个隐藏单元的激活函数。下面是关于其工作方式的图形化描述：</p>
+<p><center><img src="/images/artificial-intelligence/005.png" alt="图4"></center><br>上图展示了带有 5 个可见单元、3 个隐藏单元和每个隐藏单元 2 个片的 Maxout 网络。<br>$$h_i=max_{je[1,k]}z_{ij} $$<br>$$z_{ij}=\sum_m x_mW_{mij}+b_{ij}=xW_{\ldots ij}+b_ij $$<br>其中 W…ij 是通过获取矩阵</p>
+<hr>
+<p>$\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$<br>$$\lbrace\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\rbrace\tag{1.1}$$<br>$$\left \lbrace \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6} \right\rbrace\tag{1.2}$$ </p>
 
       
     </div>
@@ -465,6 +528,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/content/artificial-intelligence/deep-learning-neural-network-2017-04-25/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,8 +608,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/avatar.jpg"
@@ -557,7 +633,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -579,7 +655,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -640,6 +716,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的历史"><span class="nav-number">1.</span> <span class="nav-text">神经网络的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层感知器（SLP）"><span class="nav-number">2.</span> <span class="nav-text">单层感知器（SLP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多层感知器（MLP）"><span class="nav-number">3.</span> <span class="nav-text">多层感知器（MLP）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -836,6 +928,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
