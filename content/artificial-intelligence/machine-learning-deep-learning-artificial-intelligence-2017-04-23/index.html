@@ -7,9 +7,12 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
 
 
 
@@ -70,7 +73,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="神经网络,深度学习,机器学习," />
@@ -84,41 +87,24 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
-
-人工智能 —— 使用机器诠释的人类智能
-机器学习 —— 实现人工智能的一种方式
-深度学习 —— 实现机器学习的一种技术
-
-现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta name="description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：  人工智能 —— 使用机器诠释的人类智能 机器学习 —— 实现人工智能的一种方式 深度学习 —— 实现机器学习的一种技术  现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta name="keywords" content="神经网络,深度学习,机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习、深度学习与人工智能的区别">
 <meta property="og:url" content="http://blog.mobing.com/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence-2017-04-23/index.html">
 <meta property="og:site_name" content="Mob's Blog">
-<meta property="og:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
-
-人工智能 —— 使用机器诠释的人类智能
-机器学习 —— 实现人工智能的一种方式
-深度学习 —— 实现机器学习的一种技术
-
-现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta property="og:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：  人工智能 —— 使用机器诠释的人类智能 机器学习 —— 实现人工智能的一种方式 深度学习 —— 实现机器学习的一种技术  现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
 <meta property="og:updated_time" content="2017-04-24T02:58:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习、深度学习与人工智能的区别">
-<meta name="twitter:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：
-
-人工智能 —— 使用机器诠释的人类智能
-机器学习 —— 实现人工智能的一种方式
-深度学习 —— 实现机器学习的一种技术
-
-现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
+<meta name="twitter:description" content="使用机器/计算机来处理类似人类决策的任务的统计学习的基本术语是件很麻烦的事，所以才有了下面这篇文章，简单的说：  人工智能 —— 使用机器诠释的人类智能 机器学习 —— 实现人工智能的一种方式 深度学习 —— 实现机器学习的一种技术  现在的数据科学是一个知识体系，囊括了统计学和计算方法等等（而且在不同的具体领域不同学科的比例也不一样）。机器学习（或使用了其它的术语，比如深度学习、认知计算）则是让">
 
 
 
@@ -152,7 +138,7 @@
 
 
 
-  <title> 机器学习、深度学习与人工智能的区别 | Mob's Blog </title>
+  <title>机器学习、深度学习与人工智能的区别 | Mob's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -162,7 +148,7 @@
 
 
 
-<script>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -416,7 +402,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -498,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/content/methodology/internet-innovation-by-step-2017-04-17/" rel="next" title="互联网产品创新四步法">
-                <i class="fa fa-chevron-left"></i> 互联网产品创新四步法
+              <a href="/content/artificial-intelligence/machine-learning-explain-2017-04-24/" rel="next" title="漫话浅谈-机器学习">
+                <i class="fa fa-chevron-left"></i> 漫话浅谈-机器学习
               </a>
             
           </div>
@@ -508,8 +493,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/content/artificial-intelligence/machine-learning-explain-2017-04-24/" rel="prev" title="漫话浅谈-机器学习">
-                漫话浅谈-机器学习 <i class="fa fa-chevron-right"></i>
+              <a href="/content/methodology/internet-innovation-by-step-2017-04-17/" rel="prev" title="互联网产品创新四步法">
+                互联网产品创新四步法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -612,7 +597,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -786,6 +771,12 @@
 
 
 
+
+
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -808,25 +799,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -876,10 +867,6 @@
 
 
 
-  
-
-
-
 
 
 
@@ -898,7 +885,7 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
@@ -926,9 +913,28 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
+
+  
 
   
 
