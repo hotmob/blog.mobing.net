@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.mobing.com/"/>
-  <updated>2017-04-26T05:55:05.000Z</updated>
+  <updated>2017-04-27T10:05:15.000Z</updated>
   <id>http://blog.mobing.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network-2017-04-24/"/>
     <id>http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network-2017-04-24/</id>
     <published>2017-04-24T03:54:00.000Z</published>
-    <updated>2017-04-26T05:55:05.000Z</updated>
+    <updated>2017-04-27T10:05:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。<br><a id="more"></a></p>
 <h2 id="神经网络的历史"><a href="#神经网络的历史" class="headerlink" title="神经网络的历史"></a>神经网络的历史</h2><p>神经网络是当今深度学习领域技术突破的基石。神经网络可被看作是一种大规模并行的简单处理单元，它能够存储知识（knowledge）并使用这种知识来做出预测。</p>
@@ -72,15 +72,52 @@
 <p>该函数可让激活函数的取值在 -1 到 +1 之间。</p>
 <p>4.修正线性激活函数（ReLU）</p>
 <p>ReLU 是许多逻辑单元之和的平滑近似，能够产生稀疏的活动向量。下面是该函数的方程式：<br>$$ y=max\left\lbrace\begin{matrix}<br> 0,b+\sum_{i=1}^k {x_i \ast w_i} \\ \end{matrix}\right\rbrace<br>$$</p>
-<p><center><img src="/images/artificial-intelligence/004.png" alt="图3"></center><br>在上图中<br>$$ (softplus \quad f(x)=log(1+e^x) $$<br>是对修正器（rectifier）的平滑逼近</p>
-<ol>
-<li>Maxout 函数</li>
-</ol>
-<p>2013 年，Goodfellow 发现使用了一种新的激活函数的 Maxout 网络是 dropout 的天然搭档。</p>
-<p>Maxout 单元能促进 dropout 的优化以及提升 dropout 的快速近似模型平均技术（fast approximate model averaging technique）的准确度。单个 Maxout 单元可被理解为是对一个任意凸函数的片（piece）形式的线性近似。</p>
-<p>Maxout 网络不仅能学习隐藏单元之间的关系，还能学习每个隐藏单元的激活函数。下面是关于其工作方式的图形化描述：</p>
-<p><center><img src="/images/artificial-intelligence/005.png" alt="图4"></center><br>上图展示了带有 5 个可见单元、3 个隐藏单元和每个隐藏单元 2 个片的 Maxout 网络。<br>$$h_i=max_{je[1,k]}z_{ij} $$<br>$$z_{ij}=\sum_m x_mW_{mij}+b_{ij}=xW_{\ldots ij}+b_ij $$<br>其中 W…ij 是通过获取矩阵</p>
-<p>$\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$<br>$$\lbrace\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\rbrace\tag{1.1}$$<br>$$\left \lbrace \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6} \right\rbrace\tag{1.2}$$ </p>
+<center><img src="/images/artificial-intelligence/004.png" alt="图3"></center><br>在上图中<br>$$ (softplus \quad f(x)=log(1+e^x) $$<br>是对修正器（rectifier）的平滑逼近<br><br>5. Maxout 函数<br><br>2013 年，Goodfellow 发现使用了一种新的激活函数的 Maxout 网络是 dropout 的天然搭档。<br><br>Maxout 单元能促进 dropout 的优化以及提升 dropout 的快速近似模型平均技术（fast approximate model averaging technique）的准确度。单个 Maxout 单元可被理解为是对一个任意凸函数的片（piece）形式的线性近似。<br><br>Maxout 网络不仅能学习隐藏单元之间的关系，还能学习每个隐藏单元的激活函数。下面是关于其工作方式的图形化描述：<br><center><img src="/images/artificial-intelligence/005.png" alt="图4"></center><br>上图展示了带有 5 个可见单元、3 个隐藏单元和每个隐藏单元 2 个片的 Maxout 网络。<br>$$h_i=max_{je[1,k]}z_{ij} $$<br>$$z_{ij}=\sum_m x_mW_{mij}+b_{ij}=xW_{\ldots ij}+b_{ij} $$<br>其中 W…ij 是通过获取矩阵<br>$$ W \in \mathbb R^{m \times n \times k}$$<br>中第二个坐标 i 和第三个坐标 j 的输入大小的平均向量。中间单元 k 的数量被称为 Maxout 网络所用的片（piece）的数量。<br><br>- 反向传播算法<br>反向传播算法可用于训练前馈神经网络或多层感知器。这是一种通过改变网络中的权重和偏置来最小化成本函数（cost function）的方法。为了学习和做出更好的预测，会执行一些 epoch（训练周期）；在这些 epoch 中，由成本函数所决定的误差会通过梯度下降被反向传播，直到达到足够小的误差。<br><br>- 梯度下降（Gradient descent）<br>1.mini-batch 梯度下降<br><br>比如说在 100 大小的 mini-batch 中，会有 100 个训练样本被展示给学习算法，权重也会据此更新。在所有的 mini-batch 都依次呈现之后，每个 epoch 的准确度水平和训练成本水平的平均都会计算出来。<br><br>2.随机梯度下降<br><br>随机梯度下降被用在实时在线处理中，其中参数仅在呈现一个训练样本时才更新，所以准确度水平和训练成本的平均是从每个 epoch 的整个训练数据集上获得的。<br><br>3.full batch 梯度下降<br><br>在这种方法中，所有的训练样本都会被展示给学习算法，然后再更新权重。<br><br>- 成本函数（Cost Function）<br>成本函数有很多种，这里给出几个例子：<br><br>1.均方误差函数<br>$$<br>E = \frac 12 \sum_{i \in Output}(y_i-o_i)^2<br>$$<br>其中 yi 是预测的输出，oi 是真实的输出。<br>2.交叉熵函数<br>$$<br>-\frac 1n \sum_{i=1}^n log(f(x_i,l_j,W))<br>$$<br><br>其中 f 函数是模型在输入 xi’s 的标签是 li 时的预测概率，W 是它的参数，n 是训练 batch 的大小。<br><br>3.负对数似然损失（NLL）函数<br><br>NLL 是用于本报告的所有实验中的成本函数：<br>$$<br>NLL(0,D)=-\sum_{i=0}^{|D|}log P(Y=y^{(i)}|x^{(i)},\theta)<br>$$<br>其中 y(i) 是输出的值，x(i) 是特征输入的值，θ 是参数，D 是训练集。<br><br>- 学习率（Learning rate）<br>学习率控制着权重从一次迭代到另一次迭代的变化。一般来说，更小的学习率被认为是稳定的，但学习速度也更慢。另一方面，更高的学习率可能不稳定，会引起振荡和数值误差，但会加速学习过程。<br><center><img src="/images/artificial-intelligence/003-1.png" alt="学习率"></center>
+
+<ul>
+<li><p>动量（Momentum）<br>动量为避免局部极小值提供了惯性；其思想简单来说就是为当前的权重更新增加特定比例的先前的权重更新，这有助于避免受困于局部极小值。<br>$$<br>\Delta w_{ij}(n)=a\Delta w_{ji}(n-1)+\eta \delta_j(n)y_i(n)<br>$$<br>其中 α是动量。</p>
+</li>
+<li><p>Softmax<br>Softmax 是一种神经传递函数，其是可将向量变成概率的输出层中实现的 logistic 函数的广义形式。这些概率的总和为 1 且限定于 1。</p>
+<center><img src="/images/artificial-intelligence/003-2.png" alt="Softmax"></center>
+</li>
+<li><p>多层感知器（MLP）：总结</p>
+</li>
+</ul>
+<p>对于分类任务，输出层可能会整合一个 softmax 函数用来给出每个发生类（occurring class）的概率。激活函数使用输入、权重和偏置在每个层中计算每个神经元的预测输出。</p>
+<p>反向传播方法一种训练多层神经网络的方法，该方法通过修改层之间的突触连接权重以在纠错学习函数（需要是连续可微的）的基础上提升模型的性能。以下的参数在本实验中进行了评估：</p>
+<p>隐藏层的数量<br>隐藏层中神经元的数量<br>学习率和动量<br>激活函数的类型</p>
+<h2 id="深度学习概览"><a href="#深度学习概览" class="headerlink" title="深度学习概览"></a>深度学习概览</h2><p>在 2006 年之前，有各种各样的训练深度监督前馈神经网络的失败尝试是由在不可见的数据上的性能的过拟合导致的；即在训练误差降低的同时验证误差却在增长。</p>
+<p>深度网络通常是指拥有超过 1 个隐藏层的人工神经网络。训练深度隐藏层许多更多算力。更深似乎是更好的，因为直观上来说，神经元可以利用其下面的层中的神经元所得出的结果，这可以得到数据的分布式表征。</p>
+<p>Bengio 认为隐藏层中的神经元可被看作是其下面的层中的神经元所学到的特征检测器（feature detector）。这个结果处于作为一个神经元子集的更好泛化（generalization）中，而这个神经元子集可从输入空间中的特定区域的数据上进行学习。</p>
+<p>此外，更深度的架构可以更加高效，因为表现相同的功能所需的计算单元更少，从而能实现更高的效率。分布式表征背后的核心思想是统计优势的共享，其中该架构的不同组件会根据不同的目的而被复用。</p>
+<p>深度神经架构是由多个利用非线性操作的层组成的，例如在带有许多隐藏层的神经网络中。数据集中常常存在各种变化的因素，例如数据各自的性质经常可能独立地变化。</p>
+<p>深度学习算法可以获取解释数据中统计变化的因素和它们交互的方式，从而生成我们观察的那种类型的数据。较低层次的抽象更直接依赖于特定的观察；而更高层次的也更抽象，因为它们感知数据的连接也更加遥远。</p>
+<p>深度架构学习的重点是自动发现这样的抽象——从低水平的特征到更高水平的概念。可以预期，这样的学习算法可以在没有人工定义必要的抽象的情况下进行这样的发现。</p>
+<p>数据集中的训练样本的多样性必须至少和测试集一样，否则学习算法就不能归纳。深度学习方法的目的是学习特征层次，将更低层次的特征组成更高水平的抽象。</p>
+<p>带有大量参数的深度神经网络是非常强大的机器学习系统。但是，过拟合（over-fitting）是深度网络的一个严峻难题。过拟合是指当验证误差开始增长时，训练误差却在下降。Dropout 是一种用于解决这一问题的正则化技术，将在后面介绍。</p>
+<p>今天深度学习技术成功增长的两个最重要因素的其中之一是计算算力的进步。图形处理单元（GPU）和云计算对深度学习在许多问题上的应用是至关重要的。</p>
+<p>云计算可实现计算机的集群和按需处理，这有助于通过并行化神经网络的训练来减少训练时间。另一方面，GPU 是为高性能数学计算设计的专用芯片，可以加速矩阵的计算。</p>
+<p>在 2006-2007 年间，有三篇论文对深度学习这一学科产生了革命性的影响。他们的成果的关键原理是每一层都可通过无监督学习的方式进行预训练，一次处理一层。最后，使用误差的反向传播的监督训练可被用于精确调节所有的层，使得这种通过无监督学习进行的初始化比随机初始化更好。</p>
+<h3 id="受限玻尔兹曼机和深度信念网络"><a href="#受限玻尔兹曼机和深度信念网络" class="headerlink" title="受限玻尔兹曼机和深度信念网络"></a>受限玻尔兹曼机和深度信念网络</h3><p>受限玻尔兹曼机（RBM）是一种无监督算法，可被用于预训练深度信念网络。RBM 是玻尔兹曼机的简化版本，受到了统计力学的启发。这种方法是基于给定数据的潜在分布的概率对能量（ energy）建模，这些给定的数据集来自可以派生出的条件分布。</p>
+<p>玻尔兹曼机是随机处理可见单元和隐藏单元的双向连接网络。其原始数据（ raw data）对应于「可见」神经元和被观察状态的样本，而且特征检测器对应于「隐藏」神经元。在玻尔兹曼机中，可见神经元为网络和其所在的操作环境提供输入。在训练过程中，可见神经元受到了钳制（调到固定值，由训练数据确定）。另一方面，隐藏神经元自由运行。</p>
+<p>然而，玻尔兹曼机因为其连通性而非常难以训练。一个 RBM 限制了连通性从而使得学习变得简单。在组成二分图（bipartite graph）的单层中，隐藏单元没有连接，如图 2。它的优势是隐藏单位可以独立更新，并且与给定的可见状态平行。<br>这些网络受到了一个能量函数的管控，它决定了隐藏/可见状态的概率。隐藏/可见单位的每个可能的连接结构（ joint configurations ）都有一个由权重和偏差决定的 Hopfield 能量。连接结构的能量由吉布斯采样优化，它可通过最小化 RBM 的最低能量函数学习参数。</p>
+<p><center><img src="/images/artificial-intelligence/006.jpeg" alt="图5"></center><br>上图中，左边的层表示可见层，而右边的层表示隐藏层</p>
+<p>在深度信念网络（DBN）中，RBM 是通过带有重要特征的输入数据进行训练的，这些输入数据是由隐藏层中的随机神经元获取的。在第二层，训练特征的激活（activation）被当作输入数据处理。第二层 RBM 层中的学习过程可被看作是学习特征的特征，每次当一个新的层被添加到深度信念网络中时，原始训练数据的对数概率上的可变的更低的界限就会获得提升。</p>
+<p><center><img src="/images/artificial-intelligence/007.jpeg" alt="图6"></center><br>上图中，展示了 RBM 将它的数据分布转变成了隐藏单元上更后面的分布</p>
+<p>RBM 的权重是被随机初始化的，造成了分布中 p(x) 和 q(x) 的不同。在学习过程中，权重被迭代调整，从而最小化 p(x) 和 q(x) 之间的误差。在图 2 中，q(x)是源数据的近似，p(x) 是源数据。</p>
+<p>调整来自一个神经元和其他神经元的突触权重的原则不受是否是隐藏还是可见神经元的支配。通过 RBM 层更新的参数可被用于 DBN 的初始值，DBN 可通过反向传播的监督训练精调所有的层。</p>
+<p>在 KDD Cup 1999 的 IDS 数据上，适合使用多模态（Bernoulli-Gaussian）RBM 作为包含混合数据类型的 KDD Cup 1999，这些数据类型特别连续且明确。在多模态 RBM 中，有两个不同的信道输入层，一个用于连续特征的高斯输入单元，另一个是其中使用到了二元特征的 Bernoulli 输入单元层。多模态 RBM 的使用不在本文的讨论范围之中。</p>
+<h3 id="DROPOUT"><a href="#DROPOUT" class="headerlink" title="DROPOUT"></a>DROPOUT</h3><p>近期的一些进展已经引入了强大的正则化矩阵（regularizers）来减少神经网络的过拟合。在机器学习中，正则化是附加信息，通常作为一种惩罚机制被引入——惩罚导致过拟合的模型的复杂性。</p>
+<p>Dropout 是 Hinton 引入的一种深度神经网络的正则化技术，通过在每一个训练迭代上随机关掉一部分神经元，而是在测试时间使用整个网络（权重按比例缩小），从而防止特征检测器的共适应。</p>
+<p>Dropout 通过等同于训练一个共享权重的指数模型减少过拟合。对于给定的训练迭代，存在不同 dropout 配置的不同指数，所以几乎可以肯定每次训练出的模型都不一样。在测试阶段，使用了所有模型的平均值，作为强大的总体方法。</p>
+<p><center><img src="/images/artificial-intelligence/008.png" alt="图7"></center><br>上图中，dropout 随机舍弃神经网络层级之间的连接</p>
+<p><center><img src="/images/artificial-intelligence/009.png" alt="图8"></center><br>上图中，在训练时间，连接有一定的概率被舍弃，同时在训练时间中权重按比例缩小到 ρw</p>
+<p>在很多机器学习竞赛中，平均众多模型（Averaging many model）总是获胜的关键。很多不同类型的模型被使用，然后结合起来在测试阶段做预测。</p>
+<p>随机森林是一个非常强大的 bagging 算法，它是通过平均很多决策树，给它们不同的带有重置的训练样本集创造的。众所周知，决策树非常容易拟合数据，而且在测试时间进行得非常快，所以通过给它们不同的训练集来平均不同的决策树是负担得起的。</p>
+<p>然而，使用同样的深度神经网络方法的计算成本是非常昂贵的。训练单独的神经网络和多种神经网络的成本已经很高了，再平均它们看起来是不现实的。此外，我们需要的是在测试时间有效的单个网络，而不是有大量的大型神经网络。</p>
+<p>Dropout 是平均很多大型神经网络的有效方式。每次训练模型的隐藏单元的时候都能像图 8 中那样以一定的概率漏掉一些。这个概率通常是 ρ=0.5 时。因此，带有减半的开支权重（outgoing weight）的「平均网络」模型可以在测试时间像图 4 中那样使用。平均网络等同于采用概率分布的几何平均数，该分布是通过所有带有单隐层单位和 Softmax 输出层的网络进行标记预测的。</p>
+<p>依照数学证明 dropout 如何可被视为一个集成方法：<br>$$<br>P_e(y|x)<br>$$<br>是总效果的预测，使用几何平均数。<br>$$<br>P_d(y|x)<br>$$<br>是单个子模型的预测。</p>
+<p>d 是区分将哪个输入包括到 softmax 分类器中的二元向量。<br>$$<br>P_d(y|x) = softmax(W \ast (x \ast d))<br>$$<br>假设有不同的单元，将会有 2^N 的可能分配到 d。<br>$$<br>P_d(y|x) = \frac{\prod_dp_d(y|x))^{1/2\^N}}{\sum_{y`}\prod_dp_d(y`|x))^{1/2\^N}}<br>$$</p>
 ]]></content>
     
     <summary type="html">
@@ -907,31 +944,291 @@
     <link href="http://blog.mobing.com/content/hexo/hexo-mathjax-2017-04-12/"/>
     <id>http://blog.mobing.com/content/hexo/hexo-mathjax-2017-04-12/</id>
     <published>2017-04-12T07:54:03.000Z</published>
-    <updated>2017-04-26T01:55:43.000Z</updated>
+    <updated>2017-04-27T08:23:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>日常工作喜欢用markdown写技术文档，免不了会碰到数学公式。最近迁移到hexo后，遇到了同样的麻烦，原生的Hexo并不支持数学公式的显示。google之，发现了MathJax，著名的Stackoverflow网站上的漂亮公式，就是使用了MathJax插件的效果。Mathjax号称Beautiful math in all browsers，在展示数学公式方面是不错的选择。<br><a id="more"></a><br>MathJax使用网络字体（大部分浏览器都支持）去产生高质量的排版，使其在所有分辨率都可缩放和显示，这远比使用包含公式的图片要有效得多。使用MathJax显示数学公式是基于文本的，而非图片。它可以被搜索引擎使用，这意味着方程式和页面上的文字一样是可以被搜索的。 MathJax允许页面作者使用TeX、LaTeX符号和 MathML 或者 AsciiMath 去书写公式。 MathJax甚至可以将Tex格式转化为MathML格式，使其可以被原生支持MathML格式的浏览器更多的渲染。转化为MathML格式后你可以复制粘贴它们到其他程序中。</p>
 <p>MathJax是模块化的，所以它仅仅在需要时才加载它的组件，同时也可以被扩展以实现更多功能。 MathJax同时也是高度可配置的，允许作者作出更适宜网站自身的自定义。 如果你需要，MathJax的API甚至可以让你在你的网页上动态的创建公式。</p>
-<h3 id="插件集成"><a href="#插件集成" class="headerlink" title="插件集成"></a>插件集成</h3><h4 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h4><p>如果你和笔者一样使用了next的主题，那么简单了。编辑主题的 _config.yml，将 mathjax 设定为 true 即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># MathJax Support</div><div class="line">mathjax:</div></pre></td></tr></table></figure>
-<h4 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h4><p>如果是其他主题也可以先参照下是否有相关集成，否则就只能手工了，不过也很简单，只需要在markdown文件中(hexo的文章页面因为需要页面解析，要添加在title等栏目后)，添加MathJax CDN，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;</div><div class="line">   src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>就可以在md文件中插入Tex格式的公式了。</p>
-<p>值得注意的是，不管上面用了那种方案，原生的Hexo并不支持数学公式的显示。所以，如果你仅仅完成了以上步骤，在hexo g -d之后，你会发现公式的效果并没有被渲染出来。解决方案就是安装hexo的插件 Hexo-math, 安装方法如下：</p>
+<h3 id="插件集成"><a href="#插件集成" class="headerlink" title="插件集成"></a>插件集成</h3><p>安装方法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-math --save</div></pre></td></tr></table></figure>
-<p>在 Hexo 文件夹中执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo math install</div></pre></td></tr></table></figure>
 <p>在 _config.yml 文件中添加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugins:</div><div class="line"> - hexo-math</div></pre></td></tr></table></figure>
-<p>具体用法见 <a href="http://catx.me/2014/03/09/hexo-mathjax-plugin/" target="_blank" rel="external">Hexo MathJax插件</a> .</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">math:</div><div class="line">  engine: &apos;mathjax&apos; # or &apos;katex&apos;</div><div class="line">  mathjax:</div><div class="line">    # src: custom_mathjax_source</div><div class="line">    config:</div><div class="line">      # MathJax config</div></pre></td></tr></table></figure>
+<p>如果你和笔者一样使用了next的主题，那么简单了。编辑主题的 _config.yml，将 mathjax 设定为 true 即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># MathJax Support</div><div class="line">mathjax: true</div></pre></td></tr></table></figure>
+<p>此外，当然也可以手工集成，只需要在markdown文件中(hexo的文章页面因为需要页面解析，要添加在title等栏目后)，添加MathJax CDN，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;</div><div class="line">   src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>就可以在md文件中插入Tex格式的公式了。<br>具体用法见 <a href="http://catx.me/2014/03/09/hexo-mathjax-plugin/" target="_blank" rel="external">Hexo MathJax插件</a> .</p>
 <h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>行内公式的形式，例如 \(f(x)=x^2 \) ，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\\( 此处插入公式 \\)</div></pre></td></tr></table></figure>
 <p>行间公式的形式，例如<br>$$ f(x)=x^2 $$<br>代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$$ 此处插入公式 $$</div></pre></td></tr></table></figure>
-<h3 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<h3 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h3><p><strong>看到别的网站上有MathJax解析的公式时，你可以通过右键菜单”Show Math As &gt; TeX Commands”查看Tex格式。</strong></p>
+<h4 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h4><hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">大写</th>
+<th style="text-align:center">Tex</th>
+<th style="text-align:center">小写</th>
+<th style="text-align:center">Tex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">alpha</td>
+<td style="text-align:center">$A$</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">$\alpha$</td>
+<td style="text-align:center">\alpha</td>
+</tr>
+<tr>
+<td style="text-align:center">beta</td>
+<td style="text-align:center">$B$</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">$\beta$</td>
+<td style="text-align:center">\beta</td>
+</tr>
+<tr>
+<td style="text-align:center">gamma</td>
+<td style="text-align:center">$\Gamma$</td>
+<td style="text-align:center">\Gamma</td>
+<td style="text-align:center">$\gamma$</td>
+<td style="text-align:center">\gamma</td>
+</tr>
+<tr>
+<td style="text-align:center">delta</td>
+<td style="text-align:center">$\Delta$</td>
+<td style="text-align:center">\Delta</td>
+<td style="text-align:center">$\delta$</td>
+<td style="text-align:center">\delta</td>
+</tr>
+<tr>
+<td style="text-align:center">epsilon</td>
+<td style="text-align:center">$E$</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">$\epsilon$</td>
+<td style="text-align:center">\epsilon</td>
+</tr>
+<tr>
+<td style="text-align:center">zeta</td>
+<td style="text-align:center">$Z$</td>
+<td style="text-align:center">Z</td>
+<td style="text-align:center">$\zeta$</td>
+<td style="text-align:center">\zeta</td>
+</tr>
+<tr>
+<td style="text-align:center">eta</td>
+<td style="text-align:center">$H$</td>
+<td style="text-align:center">H</td>
+<td style="text-align:center">$\eta$</td>
+<td style="text-align:center">\eta</td>
+</tr>
+<tr>
+<td style="text-align:center">theta</td>
+<td style="text-align:center">$\Theta$</td>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">$\theta$</td>
+<td style="text-align:center">\theta</td>
+</tr>
+<tr>
+<td style="text-align:center">iota</td>
+<td style="text-align:center">$I$</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">$\iota$</td>
+<td style="text-align:center">\iota</td>
+</tr>
+<tr>
+<td style="text-align:center">kappa</td>
+<td style="text-align:center">$K$</td>
+<td style="text-align:center">K</td>
+<td style="text-align:center">$\kappa$</td>
+<td style="text-align:center">\kappa</td>
+</tr>
+<tr>
+<td style="text-align:center">lambda</td>
+<td style="text-align:center">$\Lambda$</td>
+<td style="text-align:center">\Lambda</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">\lambda</td>
+</tr>
+<tr>
+<td style="text-align:center">mu</td>
+<td style="text-align:center">$M$</td>
+<td style="text-align:center">M</td>
+<td style="text-align:center">$\mu$</td>
+<td style="text-align:center">\mu</td>
+</tr>
+<tr>
+<td style="text-align:center">nu</td>
+<td style="text-align:center">$N$</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">$\nu$</td>
+<td style="text-align:center">\nu</td>
+</tr>
+<tr>
+<td style="text-align:center">xi</td>
+<td style="text-align:center">$\Xi$</td>
+<td style="text-align:center">\Xi</td>
+<td style="text-align:center">$\xi$</td>
+<td style="text-align:center">\xi</td>
+</tr>
+<tr>
+<td style="text-align:center">omicron</td>
+<td style="text-align:center">$O$</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">$\omicron$</td>
+<td style="text-align:center">\omicron</td>
+</tr>
+<tr>
+<td style="text-align:center">pi</td>
+<td style="text-align:center">$\Pi$</td>
+<td style="text-align:center">\Pi</td>
+<td style="text-align:center">$\pi$</td>
+<td style="text-align:center">\pi</td>
+</tr>
+<tr>
+<td style="text-align:center">rho</td>
+<td style="text-align:center">$P$</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">$\rho$</td>
+<td style="text-align:center">\rho</td>
+</tr>
+<tr>
+<td style="text-align:center">sigma</td>
+<td style="text-align:center">$\Sigma$</td>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">$\sigma$</td>
+<td style="text-align:center">\sigma</td>
+</tr>
+<tr>
+<td style="text-align:center">tau</td>
+<td style="text-align:center">$T$</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">$\tau$</td>
+<td style="text-align:center">\tau</td>
+</tr>
+<tr>
+<td style="text-align:center">upsilon</td>
+<td style="text-align:center">$\Upsilon$</td>
+<td style="text-align:center">\Upsilon</td>
+<td style="text-align:center">$\upsilon$</td>
+<td style="text-align:center">\upsilon</td>
+</tr>
+<tr>
+<td style="text-align:center">phi</td>
+<td style="text-align:center">$\Phi$</td>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">$\phi$</td>
+<td style="text-align:center">\phi</td>
+</tr>
+<tr>
+<td style="text-align:center">chi</td>
+<td style="text-align:center">$X$</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">$\chi$</td>
+<td style="text-align:center">\chi</td>
+</tr>
+<tr>
+<td style="text-align:center">psi</td>
+<td style="text-align:center">$\Psi$</td>
+<td style="text-align:center">\Psi</td>
+<td style="text-align:center">$\psi$</td>
+<td style="text-align:center">\psi</td>
+</tr>
+<tr>
+<td style="text-align:center">omega</td>
+<td style="text-align:center">$\Omega $</td>
+<td style="text-align:center">\Omega</td>
+<td style="text-align:center">$\omega$</td>
+<td style="text-align:center">\omega</td>
+</tr>
+</tbody>
+</table>
+<p>一些字母变体 \epsilon \varepsilon \phi \varphi： <font color="red">\(\epsilon \varepsilon \phi \varphi\)</font></p>
+<h4 id="上标和下标"><a href="#上标和下标" class="headerlink" title="上标和下标"></a>上标和下标</h4><hr>
+<p>使用符号 ^ 和 _. 如, x_i^2: <font color="red">\(x_i^2\)</font>.<br>此外，还需要了解一个”组”的概念。这个组既可以是一个符号也可以使是一个勇{}括起来的公式。 比如10^10显示为 <font color="red">\(10^10\)</font>，10^{10}才是你想要的结果： <font color="red">\(10^{10}\)</font>。</p>
+<font color="red">在markdown中书写，因为\, $, {, }, _都是有特殊含义的，所以需要加\转义</font>
+
+<h4 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h4><hr>
+<ul>
+<li>小括号与方括号：使用原始的( )，[ ]即可，如，(2+3)[4+4]： <font color="red">\((2+3)[4+4]\)</font></li>
+<li>大括号：时由于大括号{ }被用来分组，因此需要使用\{和\}表示大括号，如，\{ a \ast b \} : <font color="red"> $ \{ a \ast b \} $</font>，还可以使用\lbrace 和\rbrace来表示,如，\lbrace a \ast b \rbrace： <font color="red">\(\lbrace a \ast b \rbrace\)</font>。</li>
+<li>尖括号：使用\langle 和 \rangle表示左尖括号和右尖括号。如，\langle x \rangle： <font color="red">$\langle x \rangle$</font>。</li>
+<li>上取整：使用\lceil 和 \rceil 表示。 如，\lceil x \rceil： <font color="red">$\lceil x \rceil$</font>。</li>
+<li>下取整：使用\lfloor 和 \rfloor 表示。如，\lfloor x \rfloor： <font color="red">$\lfloor x \rfloor$</font>。</li>
+<li>不可见括号：使用.表示。</li>
+</ul>
+<p>需要注意的是，原始符号并不会随着公式大小缩放。如，(\frac12)：(12)(12)。可以使用\left(…\right)来自适应的调整括号大小。如下，<br>$$\lbrace\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\rbrace\tag{1.1}$$<br>$$\left \lbrace \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6} \right\rbrace\tag{1.2}$$<br>可以看到，公式1.2中的括号是经过缩放的。</p>
+<h4 id="分式与根式-分号与开方"><a href="#分式与根式-分号与开方" class="headerlink" title="分式与根式(分号与开方)"></a>分式与根式(分号与开方)</h4><hr>
+<ul>
+<li>\frac ab 显示为 <font color="red">$\frac ab$</font> 而\frac{a+1}{b+1}显示为 <font color="red">$\frac{a+1}{b+1}$</font></li>
+<li>\over: {a+1\over b+1}为 <font color="red">${a+1\over b+1}$</font></li>
+<li>\sqrt: \sqrt{x^3} 为 <font color="red">$\sqrt{x^3}$</font>, \sqrt[3]{\frac xy}为 <font color="red">$\sqrt[3]{\frac xy}$</font>,更复杂的考虑{…}^{1/2}:<font color="red">${…}^{1/2}$</font></li>
+</ul>
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><hr>
+<p>\mathbb 和 \Bbb: <font color="red">$\mathbb {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font> 黑板体<br>\mathbf: <font color="red">$\mathbf {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font> 粗体<br>\mathtt: <font color="red">$\mathtt {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font> 打印体<br>\mathrm: <font color="red">$\mathrm {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font> 罗马体<br>\mathcal: <font color="red">$\mathcal {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font><br>\mathscr: <font color="red">$\mathscr {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font>手写体<br>\mathfrak: <font color="red">$\mathfrak {ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}$</font>德国体</p>
+<p>特殊的函数符号，考虑使用罗马字体， 如\lim, \sin， 而不是普通的lim, sin。 如 \sin x <font color="red">$\sin x$</font>,而不是 sin x  <font color="red">$sin x$</font>。 对于</p>
+<h4 id="数学符号"><a href="#数学符号" class="headerlink" title="数学符号"></a>数学符号</h4><hr>
+<p>可以参考LaTeX符号简表和 LaTex符号列表。</p>
+<ul>
+<li>求和：\sum，可使用上下标。如，\sum_1^n: <font color="red">$ \sum_1^n $</font></li>
+<li>积分：\int，可使用上下限。如，\int_1^\infty: <font color="red">$ \int_1^\infty $</font></li>
+<li>连乘：\prod: <font color="red">$ \prod $</font></li>
+<li>\bigcup: <font color="red">$ \bigcup $</font></li>
+<li>\bigcap: <font color="red">$ \bigcap $</font></li>
+<li>\iint: <font color="red">$ \iint $</font></li>
+<li>极限：\lim可以使用下标, \lim_{x\to 0}: <font color="red">$\lim_{x\to 0}$</font></li>
+<li>比较：\lt \gt \le \ge \neq: <font color="red">$\lt \gt \le \ge \neq$</font>。 可以前面加\not否定: <font color="red">$\not\lt \not\gt \not\le \not\ge \not\neq$</font></li>
+<li>运算：\times \div \pm \mp <font color="red">$\times \div \pm \mp$</font>， \cdot居中，x \cdot y: <font color="red">$x \cdot y$</font></li>
+<li>集合：\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing: <font color="red">$\cup \cap \setminus \subset \subseteq \subsetneq \supset \in \notin \emptyset \varnothing$</font></li>
+<li>排列：\choose 或 \binom, {n+1 \choose 2k} or \binom{n+1}{2k} : <font color="red">$ {n+1 choose 2k} $</font></li>
+<li>箭头：\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto \implies \iff \longrightarrow: <font color="red">$\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto \implies \iff \longrightarrow$</font></li>
+<li>逻辑：\land \lor \lnot \forall \exists \top \bot \vdash \vDash: <font color="red">$\land \lor \lnot \forall \exists \top \bot \vdash \vDash$</font></li>
+<li>空格：或者\quad 和 \qquad，MathJax自己决定是否增加空格。所以一般你指定空格是没用的， 除非你用转义\。</li>
+<li>\star \ast \oplus \circ \bullet: <font color="red">$\star \ast \oplus \circ \bullet$</font></li>
+<li>\approx \sim \cong \equiv \prec: <font color="red">$\approx \sim \cong \equiv \prec$</font></li>
+<li>\infty \aleph_0 \nabla \partial \Im \Re: <font color="red">$\infty \aleph_0 \nabla \partial \Im \Re$</font></li>
+<li>a\equiv b\pmod n: <font color="red">$a\equiv b\pmod n$</font></li>
+<li>\ldots: <font color="red">$a_1+a_2+\cdots+a_n$</font> </li>
+<li>\cdots: <font color="red">$a_1, a_2, \ldots ,a_n$</font></li>
+<li>\hat: <font color="red">$\hat x$</font></li>
+<li>\widehat: <font color="red">$\widehat {xy}$</font></li>
+<li>\bar: <font color="red">$\bar x$</font></li>
+<li>\overline: <font color="red">$\overline {xyz}$</font></li>
+<li>\vec: <font color="red">$\vec x$</font></li>
+<li>\overrightarrow: <font color="red">$\overrightarrow {xyz}$</font></li>
+<li>\dot 和 \ddot: <font color="red">$\frac d{dx}x\dot x = \dot x^2 + x\ddot x$</font></li>
+</ul>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><hr>
+<p>使用\begin{array}{列样式}…\end{array}这样的形式来创建表格，列样式可以是clr表示居中，左，右对齐，还可以使用|表示一条竖线。表格中 各行使用\分隔(hexo markdown中,需要使用\\)，各列使用&amp;分隔。使用\hline在本行前加入一条直线。 例如，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</div><div class="line">n &amp; \text&#123;Left&#125; &amp; \text&#123;Center&#125; &amp; \text&#123;Right&#125; \\\\</div><div class="line">\hline</div><div class="line">1 &amp; 0.24 &amp; 1 &amp; 125 \\\\</div><div class="line">2 &amp; -1 &amp; 189 &amp; -8 \\\\</div><div class="line">3 &amp; -20 &amp; 2000 &amp; 1+10i \\\\</div><div class="line">\end&#123;array&#125;</div></pre></td></tr></table></figure></p>
+<p>结果<br>$$<br>\begin{array}{c|lcr}<br>n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} \\<br>\hline<br>1 &amp; 0.24 &amp; 1 &amp; 125 \\<br>2 &amp; -1 &amp; 189 &amp; -8 \\<br>3 &amp; -20 &amp; 2000 &amp; 1+10i \\<br>\end{array}<br>$$</p>
+<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><hr>
+<p>和表格很类似，使用\begin{matrix}…\end{matrix}这样的形式来表示矩阵，在\begin与\end之间加入矩阵中的元素即可。矩阵的行之间使用\分隔(hexo markdown中,需要使用\\)，列之间使用&amp;分隔。例如，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\begin&#123;matrix&#125;</div><div class="line">1 &amp; x &amp; x^2 \\\\</div><div class="line">1 &amp; y &amp; y^2 \\\\</div><div class="line">1 &amp; z &amp; z^2 \\\\</div><div class="line">\end&#123;matrix&#125;</div></pre></td></tr></table></figure></p>
+<p>结果<br>$$<br>\begin{matrix}<br>1 &amp; x &amp; x^2 \\<br>1 &amp; y &amp; y^2 \\<br>1 &amp; z &amp; z^2 \\<br>\end{matrix}<br>$$<br>如果要对矩阵加括号，可以像上文中提到的一样，使用\left与\right配合表示括号符号。也可以使用特殊的matrix。即替换begin{matrix}…end{matrix}中的matrix为pmatrix，bmatrix，Bmatrix，vmatrix,Vmatrix.</p>
+<p>如pmatrix:<font color="red">$\begin{pmatrix}1&amp;2\\3&amp;4\\ \end{pmatrix}$</font> bmatrix:<font color="red">$\begin{bmatrix}1&amp;2\\3&amp;4\\ \end{bmatrix}$</font> Bmatrix:<font color="red">$\begin{Bmatrix}1&amp;2\\3&amp;4\\ \end{Bmatrix}$</font> vmatrix:<font color="red">$\begin{vmatrix}1&amp;2\\3&amp;4\\ \end{vmatrix}$</font> Vmatrix:<font color="red">$\begin{Vmatrix}1&amp;2\\3&amp;4\\ \end{Vmatrix}$</font></p>
+<p><strong>增广矩阵</strong>, 需要使用前面的array来实现, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">\left[</div><div class="line">\begin&#123;array&#125;&#123;cc|c&#125;</div><div class="line">    1&amp;2&amp;3\\\\</div><div class="line">    4&amp;5&amp;6</div><div class="line">\end&#123;array&#125;</div><div class="line">\right]</div></pre></td></tr></table></figure></p>
+<p>结果：<br>$$<br>\left[<br>\begin{array}{cc|c}<br>    1&amp;2&amp;3\\<br>    4&amp;5&amp;6<br>\end{array}<br>\right]<br>$$</p>
+<p><strong>内联矩阵</strong>, <code>\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)</code>, 效果如：<br>$$<br>\bigl( \begin{smallmatrix} a &amp; b \\ c &amp; d \end{smallmatrix} \bigr)<br>$$<br>可以使用\cdots <font color="red">$\cdots$</font> \ddots <font color="red">$\ddots$</font> \vdots <font color="red">$\vdots$</font>来省略矩阵中的元素，如：<br>$$<br>\begin{pmatrix}<br>     1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\<br>     1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\<br>     \vdots  &amp; \vdots&amp; \vdots &amp; \ddots &amp; \vdots \\<br>     1 &amp; a_m &amp; a_m^2 &amp; \cdots &amp; a_m^n<br>\end{pmatrix}<br>$$</p>
+<h4 id="公式对齐"><a href="#公式对齐" class="headerlink" title="公式对齐"></a>公式对齐</h4><hr>
+<p>有时候可能需要一系列的公式中等号对齐，如：<br>$$<br>\begin{align}<br>\sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\<br> &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\<br> &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\<br> &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\<br> &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)<br>\end{align}<br>$$<br>这需要使用形如 <code>\begin{align}…\end{align}</code> 的格式，其中需要使用&amp;来指示需要对齐的位置。请使用右键查看上述公式的代码。</p>
+<h4 id="分类表达式"><a href="#分类表达式" class="headerlink" title="分类表达式"></a>分类表达式</h4><hr>
+<p>定义函数的时候经常需要分情况给出表达式，可使用 <code>\begin{cases}…\end{cases}</code>。其中，使用\来分类，使用&amp;指示需要对齐的位置。如：<br>$$<br>f(n) =<br>\begin{cases}<br>n/2,  &amp; \text{if $n$ is even} \\<br>3n+1, &amp; \text{if $n$ is odd}  \\<br>\end{cases}<br>$$<br>上述公式的括号也可以移动到右侧，不过需要使用array来实现，如下：<br>$$<br>\left.<br>\begin{array}{l}<br>\text{if $n$ is even:}&amp;n/2\\<br>\text{if $n$ is odd:}&amp;3n+1<br>\end{array}<br>\right\}<br>=f(n)<br>$$<br>最后，如果想分类之间的垂直间隔变大，可以使用[2ex]代替\来分隔不同的情况。(3ex,4ex也可以用，1ex相当于原始距离）。</p>
+<h4 id="空间问题"><a href="#空间问题" class="headerlink" title="空间问题"></a>空间问题</h4><hr>
+<p><strong>不要在指数或者积分中使用 \frac</strong><br>在指数或者积分表达式中使用\frac会使表达式看起来不清晰，因此在专业的数学排版中很少被使用。应该使用一个水平的/来代替，效果如下：<br>$$<br>\begin{array}{cc}<br>\mathrm{Bad} &amp; \mathrm{Better} \\<br>\hline \\<br>e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}&amp; e^{i\pi/2} \\<br>\int_{-\frac\pi2}^\frac\pi2 \sin x\,dx &amp; \int_{-\pi/2}^{\pi/2}\sin x\,dx \\<br>\end{array}<br>$$<br><strong>使用 \mid 代替 | 作为分隔符</strong><br>符号|作为分隔符时有排版空间大小的问题，应该使用\mid代替。效果如下：<br>$$<br>\begin{array}{cc}<br>\mathrm{Bad} &amp; \mathrm{Better} \\<br>\hline \\<br>{x|x^2\in\Bbb Z} &amp; {x\mid x^2\in\Bbb Z} \\<br>\end{array}<br>$$<br>此外，在微分前应该使用\,来增加些许空间，否则$\TeX$会将微分紧凑地排列在一起。如下：<br>$$<br>\begin{array}{cc}<br>\mathrm{Bad} &amp; \mathrm{Better} \\<br>\hline \\<br>\iiint_V f(x)dz dy dx &amp; \iiint_V f(x)\,dz\,dy\,dx<br>\end{array}<br>$$</p>
+<h4 id="连分数"><a href="#连分数" class="headerlink" title="连分数"></a>连分数</h4><hr>
+<p>书写连分数表达式时，请使用\cfrac代替\frac或者\over两者效果对比如下：<br>$$<br>x = a_0 + \cfrac{1^2}{a_1 + \cfrac{2^2}{a_2 + \cfrac{3^2}{a_3 + \cfrac{4^4}{a_4 + \cdots}}}} \tag{\cfrac}<br>$$</p>
+<p>$$<br>x = a_0 + \frac{1^2}{a_1 + \frac{2^2}{a_2 + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}} \tag{\frac}<br>$$</p>
+<h4 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h4><hr>
+<p>使用<code>\begin{array} … \end{array}</code>与<code>\left{…\right</code>.配合，表示方程组，如：<br>$$<br>\left\{<br>\begin{array}{c}<br>a_1x+b_1y+c_1z=d_1 \\<br>a_2x+b_2y+c_2z=d_2 \\<br>a_3x+b_3y+c_3z=d_3<br>\end{array}<br>\right.<br>$$<br>同时，还可以使用<code>\begin{cases}…\end{cases}</code>表达同样的方程组，如：<br>$$<br>\begin{cases}<br>a_1x+b_1y+c_1z=d_1 \\<br>a_2x+b_2y+c_2z=d_2 \\<br>a_3x+b_3y+c_3z=d_3<br>\end{cases}<br>$$<br>对齐方程组中的 = 号，可以使用 <code>\being{aligned} .. \end{aligned}</code>，如：<br>$$<br>\left\{<br>\begin{aligned}<br>a_1x+b_1y+c_1z &amp;=d_1+e_1 \\<br>a_2x+b_2y&amp;=d_2 \\<br>a_3x+b_3y+c_3z &amp;=d_3<br>\end{aligned}<br>\right.<br>$$<br>如果要对齐 = 号 和项，可以使用<code>\being{array}{列样式} .. \end{array}</code>，如：<br>$$<br>\left\{<br>\begin{array}{ll}<br>a_1x+b_1y+c_1z &amp;=d_1+e_1 \\<br>a_2x+b_2y &amp;=d_2 \\<br>a_3x+b_3y+c_3z &amp;=d_3<br>\end{array}<br>\right.<br>$$</p>
+<h4 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h4><hr>
+<p>命名颜色是浏览器相关的，如果浏览器没有定义相关的颜色名称，则相关文本将被渲染为黑色。以下颜色是HTML4与CSS2标准中定义的一些颜色，其应该被大多数浏览器定义了。<br>$$<br>\begin{array}{|rc|}<br>\hline<br>\verb+\color{black}{text}+ &amp; \color{black}{text} \\<br>\verb+\color{gray}{text}+ &amp; \color{gray}{text} \\<br>\verb+\color{silver}{text}+ &amp; \color{silver}{text} \\<br>\verb+\color{white}{text}+ &amp; \color{white}{text} \\<br>\hline<br>\verb+\color{maroon}{text}+ &amp; \color{maroon}{text} \\<br>\verb+\color{red}{text}+ &amp; \color{red}{text} \\<br>\verb+\color{yellow}{text}+ &amp; \color{yellow}{text} \\<br>\verb+\color{lime}{text}+ &amp; \color{lime}{text} \\<br>\verb+\color{olive}{text}+ &amp; \color{olive}{text} \\<br>\verb+\color{green}{text}+ &amp; \color{green}{text} \\<br>\verb+\color{teal}{text}+ &amp; \color{teal}{text} \\<br>\verb+\color{aqua}{text}+ &amp; \color{aqua}{text} \\<br>\verb+\color{blue}{text}+ &amp; \color{blue}{text} \\<br>\verb+\color{navy}{text}+ &amp; \color{navy}{text} \\<br>\verb+\color{purple}{text}+ &amp; \color{purple}{text} \\<br>\verb+\color{fuchsia}{text}+ &amp; \color{magenta}{text} \\<br>\hline<br>\end{array}<br>$$<br>此外，HTML5与CSS3也定义了一些颜色名称。同时，颜色也可以使用#rgb的形式来表示，r、g、b分别表示代表颜色值得16进制数，如：<code>\color{\#0F0}{text}</code>.<a href="http://www.w3.org/TR/css3-color/#svg-color" target="_blank" rel="external">更多点击这里</a> 或 <a href="http://www.w3schools.com/html/html_colors.asp" target="_blank" rel="external">HTML色彩快速参考手册</a></p>
+<h4 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h4><p>$$<br>\require{cancel}\begin{array}{rl} \verb|y+\cancel{x}| &amp; y+\cancel{x}\\ \verb|\cancel{y+x}| &amp; \cancel{y+x}\\ \verb|y+\bcancel{x}| &amp; y+\bcancel{x}\\ \verb|y+\xcancel{x}| &amp; y+\xcancel{x}\\ \verb|y+\cancelto{0}{x}| &amp; y+\cancelto{0}{x}\\ \verb+\frac{1\cancel9}{\cancel95} = \frac15+&amp; \frac{1\cancel9}{\cancel95} = \frac15 \\ \end{array}<br>$$<br>$$<br>\require{enclose}\begin{array}{rl}<br>\verb|\enclose{horizontalstrike}{x+y}| &amp; \enclose{horizontalstrike}{x+y}\\<br>\verb|\enclose{verticalstrike}{\frac xy}| &amp; \enclose{verticalstrike}{\frac xy}\\<br>\verb|\enclose{updiagonalstrike}{x+y}| &amp; \enclose{updiagonalstrike}{x+y}\\<br>\verb|\enclose{downdiagonalstrike}{x+y}| &amp; \enclose{downdiagonalstrike}{x+y}\\<br>\verb|\enclose{horizontalstrike,updiagonalstrike}{x+y}| &amp; \enclose{horizontalstrike,updiagonalstrike}{x+y}\\<br>\end{array}<br>$$</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">MathJax basic tutorial and quick reference - StackExchange</a></li>
 <li><a href="http://docs.mathjax.org/en/latest/start.html" target="_blank" rel="external">MathJax Docs
 </a></li>
 <li><a href="http://easy-copy-mathjax.xxxx7.com/" target="_blank" rel="external">Easy Copy MathJax</a></li>
+<li><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="external">常用数学符号的 LaTeX 表示方法</a></li>
 </ul>
 ]]></content>
     
