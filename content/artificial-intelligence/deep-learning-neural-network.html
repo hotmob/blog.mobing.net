@@ -1,0 +1,1031 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="nsaODT22DkyPnvKcvjnvA7hdNmyAEqH_on5Zlbsp_9M" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="教程,入门,神经网络,深度学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mob's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。">
+<meta name="keywords" content="教程,入门,神经网络,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习与神经网络">
+<meta property="og:url" content="http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network.html">
+<meta property="og:site_name" content="Mob's Blog">
+<meta property="og:description" content="随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/001.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/002.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/003.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/004.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/005.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/003-1.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/003-2.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/006.jpeg">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/007.jpeg">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/008.png">
+<meta property="og:image" content="http://blog.mobing.com/images/artificial-intelligence/009.png">
+<meta property="og:updated_time" content="2017-04-27T10:05:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习与神经网络">
+<meta name="twitter:description" content="随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。">
+<meta name="twitter:image" content="http://blog.mobing.com/images/artificial-intelligence/001.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'XGFEWQLHLR',
+      apiKey: 'e26c21e3e7ef84490b6fb76e1cd8a8db',
+      indexName: 'hexo.me',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network.html"/>
+
+
+
+
+
+  <title>深度学习与神经网络 | Mob's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-27538548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mob's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">浮生若梦，为欢几何</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mob">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mob's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深度学习与神经网络
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T11:54:00+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/人工智能/" itemprop="url" rel="index">
+                    <span itemprop="name">人工智能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/content/artificial-intelligence/deep-learning-neural-network.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="content/artificial-intelligence/deep-learning-neural-network.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着神经网络的进化，许多过去曾被认为不可想象的任务现在也能够被完成了。图像识别、语音识别、寻找数据集中的深度关系等任务现在已经变得远远更加简单了。在此向这一领域的杰出的研究者致以真诚的谢意，正是他们的发现和成果帮助我们利用上了神经网络的真正力量。<br><a id="more"></a></p>
+<h2 id="神经网络的历史"><a href="#神经网络的历史" class="headerlink" title="神经网络的历史"></a>神经网络的历史</h2><p>神经网络是当今深度学习领域技术突破的基石。神经网络可被看作是一种大规模并行的简单处理单元，它能够存储知识（knowledge）并使用这种知识来做出预测。</p>
+<p>神经网络需要通过学习过程来从其环境中获取知识，这个过程模拟了生物大脑的工作方式。然后，被称为突触权重（synaptic weight）的干涉连接强度可被用于存储获取到的知识。在学习过程中，神经网络的突触权重会以一种有序的方式进行修改，从而实现所需的目标。1950 年，神经心理学家 Karl Lashley 发表了一篇将大脑视作分布式系统的论文。</p>
+<p>人们将神经网络与人脑进行比较的另一个原因是它们的运行方式都像是非线性的并行信息处理系统，可以执行模式识别和感知这样的计算。因此，这些网络在语音、音频和图像识别等本质上是非线性的输入/信号上可以具有非常良好的表现。</p>
+<p>神经网络先驱 McCulloch 和 Pitts 在 1943 年发表了一篇对一个有两个输入和一个输出的模型的研究文章。该模型具有以下特性：</p>
+<p>要一个神经元被激活，必需满足以下条件：</p>
+<ul>
+<li>其中一个输入是激活的</li>
+<li>每个输入的权重相等</li>
+<li>该模型的输出是二元的</li>
+</ul>
+<p>通过对输入值求和得到的输出要么是 1，要么是 0；所以这样的计算存在一个特定的阈值。</p>
+<p>Hebb 在其 1949 年的著作《The Organization of Behaviour（行为组织）》中第一次提出了这一思想：为了应对任务的变化，大脑中的连接会不断发生改变。这样的规则意味着两个神经元之间的连接在这同一时间内是激活的。这一思想很快就变成了开发学习的计算模型和自适应系统的灵感来源。</p>
+<p>人工神经网络有能力从被提供的数据中学习，这被称为自适应学习（adaptive learning），而神经网络创造其自己的组织或信息表征的能力则被称为自组织（self-organisation）。</p>
+<p>15 年后，Rosenblatt 于 1958 年开发出了感知器（perceptron），成为了神经元的下一个模型。感知器是最简单的神经网络，能将数据线性地分为两类。后来，他随机地将这些感知器互相连接，并使用了一种试错方法来改变权重以进行学习。</p>
+<p>1969 年，在数学家 Marvin Minsky 和 Seymour Parpert 发表了一篇对感知器的数学分析后，这个方向的研究在接下来的 15 年里陷入了停滞。他们的研究发现感知器无法表征很多重要的问题，比如异或函数（XOR）。其实，那时的计算机还没有足够的处理能力来有效地处理大型神经网络。</p>
+<p>1986 年，Rumelhart、Hinton 和 Williams 报告他们所开发的反向传播（back-propagation）算法能够解决 XOR 这样的问题，并由此开启了第二代神经网络。同一年，Rumelhart 和 McClelland 编辑的两卷知名著作《Parallel Distributed Processing: Explorations in the Microstructures of Cognition（并行分布式处理：认知的微结构中的探索）》发表。这本书在反向传播的应用上产生了很大的影响，而反向传播也已经在多层感知器的训练上成为了最为流行的学习算法。</p>
+<h2 id="单层感知器（SLP）"><a href="#单层感知器（SLP）" class="headerlink" title="单层感知器（SLP）"></a>单层感知器（SLP）</h2><p>感知器的最简单形式是在输入和输出之间有一个单层的权重连接。这种形式可被看作是最简单的前馈网络（feed-forward network）。在一个前馈网络中，信息总是向一个方向移动，永不回头。</p>
+<center><img src="/images/artificial-intelligence/001.png" alt="图1"></center>
+
+<p>上图就是一个单层感知器，可用来更轻松地理解前面所解释的多层感知器的概念基础。单层感知器表示了网络中一个层和其它层之间的连接的 m 权重，该权重可被看作是一组突触或连接链。这个参数表示了每个特征 xj 的重要性。下面是输入乘以它们各自的突触连接这一功能的加法器函数：<br>$$ u_{k} = {\sum _ {j=1}^m} w_{kj}x_j $$<br>其偏置 bk 用作对加法器函数 uk 得到 vk 的输出的仿射变换（ affine transformation），其诱导局部域（induced local field）为：<br>$$ v_{k} = u_{k} + b_{k} $$</p>
+<h2 id="多层感知器（MLP）"><a href="#多层感知器（MLP）" class="headerlink" title="多层感知器（MLP）"></a>多层感知器（MLP）</h2><p>多层感知器也被称为前馈神经网络（feed-forward neural network），由每一层都完全连接到下一层的层序列组成。</p>
+<p>一个多层感知器在输入和输出层之间有一个或多个隐藏层，其中每一层都包含多个通过权重链接彼此互连的神经元。输入层中神经元的数量即为数据集中属性的数量，输出层中神经元数量是对数据集的给定类别的数量。</p>
+<center><img src="/images/artificial-intelligence/002.png" alt="图2"></center>
+
+<p>上图是一个至少有三层的多层感知器，其中每一层都和前一层相连。要使这个架构做到深度，我们需要引入多个隐藏层。</p>
+<ul>
+<li>参数的初始化</li>
+</ul>
+<p>在参数的初始化中，权重（weight）和偏置（bias）在确定最终模型的过程中发挥了重要的作用。关于初始化策略的文献资料有很多。</p>
+<p>一个好的随机初始化策略可以避开局部极小值的困境。局部极小值（local minima）问题是指网络在训练过程中受困于错误的表面而不能深入，即使该网络还仍有学习的能力。</p>
+<p>使用不同的初始化策略进行实验已经超出了本文的研究范围。</p>
+<p>初始化策略应该根据所使用的激活函数进行选择。对于双曲正切函数，初始化区间应该为<br>$$ \left\lfloor -\sqrt{\frac 6{fan_{in}+fan_{out}}}, \sqrt{\frac 6{fan_{in}+fan_{out}}} \right\rfloor $$<br>其中 fan in 是第 i-1 层的单元的数量，fan out 是第 i 层的单元的数量。类似地，对于 S 型激活函数，初始化区间应该为<br>$$ \left\lfloor -\sqrt[4]{\frac 6{fan_{in}+fan_{out}}}, \sqrt[4]{\frac 6{fan_{in}+fan_{out}}} \right\rfloor $$<br>这些初始化策略能在网络训练的早期阶段确保信息向上和向后传播。</p>
+<ul>
+<li>激活函数</li>
+</ul>
+<p>激活函数将诱导局部域 v 下的神经元的输出定义为：<br>$$ y_{k} = \varphi(u_{k} + b_{k}) $$<br>其中 \( \varphi( ) \) 是该激活函数。激活函数有很多种，下面给出常用的一些：<br>$$\varphi_{(v)}=\begin{cases} 1\quad if\quad v\ge0 \\ 0\quad if\quad v\lt0 \end{cases} $$</p>
+<center><img src="/images/artificial-intelligence/003.png" alt="激活函数"></center>
+
+<p>1.阈值函数（Threshold Function）</p>
+<p>上图表示该神经元要么是激活的，要么就是非激活的。但是，该函数是不可微分的，这在使用反向传播算法时非常重要（稍后解释）。</p>
+<ol>
+<li>S 型函数（Sigmoid Function）</li>
+</ol>
+<p>和阈值函数一样，S 型函数是一个取值在 0 到 1 之间的逻辑函数，但该激活函数是连续可微的。<br>$$\varphi_{(v)}=\frac{1}{1+exp^{(-av)}} $$<br>其中 α 是该函数的斜率参数（slope parameter）。此外，该函数在本质上是非线性的，这有助于确保权重和偏置中的较小改变能在神经元的输出中产生较大的变化。</p>
+<p>3.双曲正切函数（Hyperbolic Tangent Function）</p>
+<p>φ(v) = tanh (v)</p>
+<p>该函数可让激活函数的取值在 -1 到 +1 之间。</p>
+<p>4.修正线性激活函数（ReLU）</p>
+<p>ReLU 是许多逻辑单元之和的平滑近似，能够产生稀疏的活动向量。下面是该函数的方程式：<br>$$ y=max\left\lbrace\begin{matrix}<br> 0,b+\sum_{i=1}^k {x_i \ast w_i} \\ \end{matrix}\right\rbrace<br>$$</p>
+<center><img src="/images/artificial-intelligence/004.png" alt="图3"></center><br>在上图中<br>$$ (softplus \quad f(x)=log(1+e^x) $$<br>是对修正器（rectifier）的平滑逼近<br><br>5. Maxout 函数<br><br>2013 年，Goodfellow 发现使用了一种新的激活函数的 Maxout 网络是 dropout 的天然搭档。<br><br>Maxout 单元能促进 dropout 的优化以及提升 dropout 的快速近似模型平均技术（fast approximate model averaging technique）的准确度。单个 Maxout 单元可被理解为是对一个任意凸函数的片（piece）形式的线性近似。<br><br>Maxout 网络不仅能学习隐藏单元之间的关系，还能学习每个隐藏单元的激活函数。下面是关于其工作方式的图形化描述：<br><center><img src="/images/artificial-intelligence/005.png" alt="图4"></center><br>上图展示了带有 5 个可见单元、3 个隐藏单元和每个隐藏单元 2 个片的 Maxout 网络。<br>$$h_i=max_{je[1,k]}z_{ij} $$<br>$$z_{ij}=\sum_m x_mW_{mij}+b_{ij}=xW_{\ldots ij}+b_{ij} $$<br>其中 W…ij 是通过获取矩阵<br>$$ W \in \mathbb R^{m \times n \times k}$$<br>中第二个坐标 i 和第三个坐标 j 的输入大小的平均向量。中间单元 k 的数量被称为 Maxout 网络所用的片（piece）的数量。<br><br>- 反向传播算法<br>反向传播算法可用于训练前馈神经网络或多层感知器。这是一种通过改变网络中的权重和偏置来最小化成本函数（cost function）的方法。为了学习和做出更好的预测，会执行一些 epoch（训练周期）；在这些 epoch 中，由成本函数所决定的误差会通过梯度下降被反向传播，直到达到足够小的误差。<br><br>- 梯度下降（Gradient descent）<br>1.mini-batch 梯度下降<br><br>比如说在 100 大小的 mini-batch 中，会有 100 个训练样本被展示给学习算法，权重也会据此更新。在所有的 mini-batch 都依次呈现之后，每个 epoch 的准确度水平和训练成本水平的平均都会计算出来。<br><br>2.随机梯度下降<br><br>随机梯度下降被用在实时在线处理中，其中参数仅在呈现一个训练样本时才更新，所以准确度水平和训练成本的平均是从每个 epoch 的整个训练数据集上获得的。<br><br>3.full batch 梯度下降<br><br>在这种方法中，所有的训练样本都会被展示给学习算法，然后再更新权重。<br><br>- 成本函数（Cost Function）<br>成本函数有很多种，这里给出几个例子：<br><br>1.均方误差函数<br>$$<br>E = \frac 12 \sum_{i \in Output}(y_i-o_i)^2<br>$$<br>其中 yi 是预测的输出，oi 是真实的输出。<br>2.交叉熵函数<br>$$<br>-\frac 1n \sum_{i=1}^n log(f(x_i,l_j,W))<br>$$<br><br>其中 f 函数是模型在输入 xi’s 的标签是 li 时的预测概率，W 是它的参数，n 是训练 batch 的大小。<br><br>3.负对数似然损失（NLL）函数<br><br>NLL 是用于本报告的所有实验中的成本函数：<br>$$<br>NLL(0,D)=-\sum_{i=0}^{|D|}log P(Y=y^{(i)}|x^{(i)},\theta)<br>$$<br>其中 y(i) 是输出的值，x(i) 是特征输入的值，θ 是参数，D 是训练集。<br><br>- 学习率（Learning rate）<br>学习率控制着权重从一次迭代到另一次迭代的变化。一般来说，更小的学习率被认为是稳定的，但学习速度也更慢。另一方面，更高的学习率可能不稳定，会引起振荡和数值误差，但会加速学习过程。<br><center><img src="/images/artificial-intelligence/003-1.png" alt="学习率"></center>
+
+<ul>
+<li><p>动量（Momentum）<br>动量为避免局部极小值提供了惯性；其思想简单来说就是为当前的权重更新增加特定比例的先前的权重更新，这有助于避免受困于局部极小值。<br>$$<br>\Delta w_{ij}(n)=a\Delta w_{ji}(n-1)+\eta \delta_j(n)y_i(n)<br>$$<br>其中 α是动量。</p>
+</li>
+<li><p>Softmax<br>Softmax 是一种神经传递函数，其是可将向量变成概率的输出层中实现的 logistic 函数的广义形式。这些概率的总和为 1 且限定于 1。</p>
+<center><img src="/images/artificial-intelligence/003-2.png" alt="Softmax"></center>
+</li>
+<li><p>多层感知器（MLP）：总结</p>
+</li>
+</ul>
+<p>对于分类任务，输出层可能会整合一个 softmax 函数用来给出每个发生类（occurring class）的概率。激活函数使用输入、权重和偏置在每个层中计算每个神经元的预测输出。</p>
+<p>反向传播方法一种训练多层神经网络的方法，该方法通过修改层之间的突触连接权重以在纠错学习函数（需要是连续可微的）的基础上提升模型的性能。以下的参数在本实验中进行了评估：</p>
+<p>隐藏层的数量<br>隐藏层中神经元的数量<br>学习率和动量<br>激活函数的类型</p>
+<h2 id="深度学习概览"><a href="#深度学习概览" class="headerlink" title="深度学习概览"></a>深度学习概览</h2><p>在 2006 年之前，有各种各样的训练深度监督前馈神经网络的失败尝试是由在不可见的数据上的性能的过拟合导致的；即在训练误差降低的同时验证误差却在增长。</p>
+<p>深度网络通常是指拥有超过 1 个隐藏层的人工神经网络。训练深度隐藏层许多更多算力。更深似乎是更好的，因为直观上来说，神经元可以利用其下面的层中的神经元所得出的结果，这可以得到数据的分布式表征。</p>
+<p>Bengio 认为隐藏层中的神经元可被看作是其下面的层中的神经元所学到的特征检测器（feature detector）。这个结果处于作为一个神经元子集的更好泛化（generalization）中，而这个神经元子集可从输入空间中的特定区域的数据上进行学习。</p>
+<p>此外，更深度的架构可以更加高效，因为表现相同的功能所需的计算单元更少，从而能实现更高的效率。分布式表征背后的核心思想是统计优势的共享，其中该架构的不同组件会根据不同的目的而被复用。</p>
+<p>深度神经架构是由多个利用非线性操作的层组成的，例如在带有许多隐藏层的神经网络中。数据集中常常存在各种变化的因素，例如数据各自的性质经常可能独立地变化。</p>
+<p>深度学习算法可以获取解释数据中统计变化的因素和它们交互的方式，从而生成我们观察的那种类型的数据。较低层次的抽象更直接依赖于特定的观察；而更高层次的也更抽象，因为它们感知数据的连接也更加遥远。</p>
+<p>深度架构学习的重点是自动发现这样的抽象——从低水平的特征到更高水平的概念。可以预期，这样的学习算法可以在没有人工定义必要的抽象的情况下进行这样的发现。</p>
+<p>数据集中的训练样本的多样性必须至少和测试集一样，否则学习算法就不能归纳。深度学习方法的目的是学习特征层次，将更低层次的特征组成更高水平的抽象。</p>
+<p>带有大量参数的深度神经网络是非常强大的机器学习系统。但是，过拟合（over-fitting）是深度网络的一个严峻难题。过拟合是指当验证误差开始增长时，训练误差却在下降。Dropout 是一种用于解决这一问题的正则化技术，将在后面介绍。</p>
+<p>今天深度学习技术成功增长的两个最重要因素的其中之一是计算算力的进步。图形处理单元（GPU）和云计算对深度学习在许多问题上的应用是至关重要的。</p>
+<p>云计算可实现计算机的集群和按需处理，这有助于通过并行化神经网络的训练来减少训练时间。另一方面，GPU 是为高性能数学计算设计的专用芯片，可以加速矩阵的计算。</p>
+<p>在 2006-2007 年间，有三篇论文对深度学习这一学科产生了革命性的影响。他们的成果的关键原理是每一层都可通过无监督学习的方式进行预训练，一次处理一层。最后，使用误差的反向传播的监督训练可被用于精确调节所有的层，使得这种通过无监督学习进行的初始化比随机初始化更好。</p>
+<h3 id="受限玻尔兹曼机和深度信念网络"><a href="#受限玻尔兹曼机和深度信念网络" class="headerlink" title="受限玻尔兹曼机和深度信念网络"></a>受限玻尔兹曼机和深度信念网络</h3><p>受限玻尔兹曼机（RBM）是一种无监督算法，可被用于预训练深度信念网络。RBM 是玻尔兹曼机的简化版本，受到了统计力学的启发。这种方法是基于给定数据的潜在分布的概率对能量（ energy）建模，这些给定的数据集来自可以派生出的条件分布。</p>
+<p>玻尔兹曼机是随机处理可见单元和隐藏单元的双向连接网络。其原始数据（ raw data）对应于「可见」神经元和被观察状态的样本，而且特征检测器对应于「隐藏」神经元。在玻尔兹曼机中，可见神经元为网络和其所在的操作环境提供输入。在训练过程中，可见神经元受到了钳制（调到固定值，由训练数据确定）。另一方面，隐藏神经元自由运行。</p>
+<p>然而，玻尔兹曼机因为其连通性而非常难以训练。一个 RBM 限制了连通性从而使得学习变得简单。在组成二分图（bipartite graph）的单层中，隐藏单元没有连接，如图 2。它的优势是隐藏单位可以独立更新，并且与给定的可见状态平行。<br>这些网络受到了一个能量函数的管控，它决定了隐藏/可见状态的概率。隐藏/可见单位的每个可能的连接结构（ joint configurations ）都有一个由权重和偏差决定的 Hopfield 能量。连接结构的能量由吉布斯采样优化，它可通过最小化 RBM 的最低能量函数学习参数。</p>
+<p><center><img src="/images/artificial-intelligence/006.jpeg" alt="图5"></center><br>上图中，左边的层表示可见层，而右边的层表示隐藏层</p>
+<p>在深度信念网络（DBN）中，RBM 是通过带有重要特征的输入数据进行训练的，这些输入数据是由隐藏层中的随机神经元获取的。在第二层，训练特征的激活（activation）被当作输入数据处理。第二层 RBM 层中的学习过程可被看作是学习特征的特征，每次当一个新的层被添加到深度信念网络中时，原始训练数据的对数概率上的可变的更低的界限就会获得提升。</p>
+<p><center><img src="/images/artificial-intelligence/007.jpeg" alt="图6"></center><br>上图中，展示了 RBM 将它的数据分布转变成了隐藏单元上更后面的分布</p>
+<p>RBM 的权重是被随机初始化的，造成了分布中 p(x) 和 q(x) 的不同。在学习过程中，权重被迭代调整，从而最小化 p(x) 和 q(x) 之间的误差。在图 2 中，q(x)是源数据的近似，p(x) 是源数据。</p>
+<p>调整来自一个神经元和其他神经元的突触权重的原则不受是否是隐藏还是可见神经元的支配。通过 RBM 层更新的参数可被用于 DBN 的初始值，DBN 可通过反向传播的监督训练精调所有的层。</p>
+<p>在 KDD Cup 1999 的 IDS 数据上，适合使用多模态（Bernoulli-Gaussian）RBM 作为包含混合数据类型的 KDD Cup 1999，这些数据类型特别连续且明确。在多模态 RBM 中，有两个不同的信道输入层，一个用于连续特征的高斯输入单元，另一个是其中使用到了二元特征的 Bernoulli 输入单元层。多模态 RBM 的使用不在本文的讨论范围之中。</p>
+<h3 id="DROPOUT"><a href="#DROPOUT" class="headerlink" title="DROPOUT"></a>DROPOUT</h3><p>近期的一些进展已经引入了强大的正则化矩阵（regularizers）来减少神经网络的过拟合。在机器学习中，正则化是附加信息，通常作为一种惩罚机制被引入——惩罚导致过拟合的模型的复杂性。</p>
+<p>Dropout 是 Hinton 引入的一种深度神经网络的正则化技术，通过在每一个训练迭代上随机关掉一部分神经元，而是在测试时间使用整个网络（权重按比例缩小），从而防止特征检测器的共适应。</p>
+<p>Dropout 通过等同于训练一个共享权重的指数模型减少过拟合。对于给定的训练迭代，存在不同 dropout 配置的不同指数，所以几乎可以肯定每次训练出的模型都不一样。在测试阶段，使用了所有模型的平均值，作为强大的总体方法。</p>
+<p><center><img src="/images/artificial-intelligence/008.png" alt="图7"></center><br>上图中，dropout 随机舍弃神经网络层级之间的连接</p>
+<p><center><img src="/images/artificial-intelligence/009.png" alt="图8"></center><br>上图中，在训练时间，连接有一定的概率被舍弃，同时在训练时间中权重按比例缩小到 ρw</p>
+<p>在很多机器学习竞赛中，平均众多模型（Averaging many model）总是获胜的关键。很多不同类型的模型被使用，然后结合起来在测试阶段做预测。</p>
+<p>随机森林是一个非常强大的 bagging 算法，它是通过平均很多决策树，给它们不同的带有重置的训练样本集创造的。众所周知，决策树非常容易拟合数据，而且在测试时间进行得非常快，所以通过给它们不同的训练集来平均不同的决策树是负担得起的。</p>
+<p>然而，使用同样的深度神经网络方法的计算成本是非常昂贵的。训练单独的神经网络和多种神经网络的成本已经很高了，再平均它们看起来是不现实的。此外，我们需要的是在测试时间有效的单个网络，而不是有大量的大型神经网络。</p>
+<p>Dropout 是平均很多大型神经网络的有效方式。每次训练模型的隐藏单元的时候都能像图 8 中那样以一定的概率漏掉一些。这个概率通常是 ρ=0.5 时。因此，带有减半的开支权重（outgoing weight）的「平均网络」模型可以在测试时间像图 4 中那样使用。平均网络等同于采用概率分布的几何平均数，该分布是通过所有带有单隐层单位和 Softmax 输出层的网络进行标记预测的。</p>
+<p>依照数学证明 dropout 如何可被视为一个集成方法：<br>$$<br>P_e(y|x)<br>$$<br>是总效果的预测，使用几何平均数。<br>$$<br>P_d(y|x)<br>$$<br>是单个子模型的预测。</p>
+<p>d 是区分将哪个输入包括到 softmax 分类器中的二元向量。<br>$$<br>P_d(y|x) = softmax(W \ast (x \ast d))<br>$$<br>假设有不同的单元，将会有 2^N 的可能分配到 d。<br>$$<br>P_d(y|x) = \frac{\prod_dp_d(y|x))^{1/2\^N}}{\sum_{y`}\prod_dp_d(y`|x))^{1/2\^N}}<br>$$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/入门/" rel="tag"># 入门</a>
+          
+            <a href="/tags/神经网络/" rel="tag"># 神经网络</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/content/fintech/how-to-do-app.html" rel="next" title="如何做好互金领域的C端市场">
+                <i class="fa fa-chevron-left"></i> 如何做好互金领域的C端市场
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/content/artificial-intelligence/machine-learning-explain.html" rel="prev" title="漫话浅谈-机器学习">
+                漫话浅谈-机器学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.jpg"
+               alt="Mob" />
+          <p class="site-author-name" itemprop="name">Mob</p>
+           
+              <p class="site-description motion-element" itemprop="description">给自己一份自信，不卑不亢；给自己一份洒脱，悠然前行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hotmob" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hotmob" target="_blank" title="Twitter" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/ammob" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的历史"><span class="nav-number">1.</span> <span class="nav-text">神经网络的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单层感知器（SLP）"><span class="nav-number">2.</span> <span class="nav-text">单层感知器（SLP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多层感知器（MLP）"><span class="nav-number">3.</span> <span class="nav-text">多层感知器（MLP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习概览"><span class="nav-number">4.</span> <span class="nav-text">深度学习概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#受限玻尔兹曼机和深度信念网络"><span class="nav-number">4.1.</span> <span class="nav-text">受限玻尔兹曼机和深度信念网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DROPOUT"><span class="nav-number">4.2.</span> <span class="nav-text">DROPOUT</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mob</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hotmob.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network.html';
+          this.page.identifier = 'content/artificial-intelligence/deep-learning-neural-network.html';
+          this.page.title = '深度学习与神经网络';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hotmob.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

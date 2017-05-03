@@ -1,0 +1,966 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="nsaODT22DkyPnvKcvjnvA7hdNmyAEqH_on5Zlbsp_9M" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="教程,入门,神经网络,机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mob's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="自从google的AlphaGo战胜李世石后，机器学习，人工智能，神经网络的大潮便席卷而来，各种网络、线下媒体的狂潮热捧。理性上，大家都知道进步的意义。也都知道长远来看，人工智能的发展不仅对人类生活的方方面面都有积极意义，从根本上说，这也的确将是一个新时代的开端，引用别人的一句话：“我们走在浪潮之巅，我们可以投身其中，我们可以改变世界”。现在，让我们一起来迎接吧。">
+<meta name="keywords" content="教程,入门,神经网络,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="漫话浅谈-机器学习">
+<meta property="og:url" content="http://blog.mobing.com/content/artificial-intelligence/machine-learning-explain.html">
+<meta property="og:site_name" content="Mob's Blog">
+<meta property="og:description" content="自从google的AlphaGo战胜李世石后，机器学习，人工智能，神经网络的大潮便席卷而来，各种网络、线下媒体的狂潮热捧。理性上，大家都知道进步的意义。也都知道长远来看，人工智能的发展不仅对人类生活的方方面面都有积极意义，从根本上说，这也的确将是一个新时代的开端，引用别人的一句话：“我们走在浪潮之巅，我们可以投身其中，我们可以改变世界”。现在，让我们一起来迎接吧。">
+<meta property="og:updated_time" content="2017-04-24T02:58:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="漫话浅谈-机器学习">
+<meta name="twitter:description" content="自从google的AlphaGo战胜李世石后，机器学习，人工智能，神经网络的大潮便席卷而来，各种网络、线下媒体的狂潮热捧。理性上，大家都知道进步的意义。也都知道长远来看，人工智能的发展不仅对人类生活的方方面面都有积极意义，从根本上说，这也的确将是一个新时代的开端，引用别人的一句话：“我们走在浪潮之巅，我们可以投身其中，我们可以改变世界”。现在，让我们一起来迎接吧。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'XGFEWQLHLR',
+      apiKey: 'e26c21e3e7ef84490b6fb76e1cd8a8db',
+      indexName: 'hexo.me',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.mobing.com/content/artificial-intelligence/machine-learning-explain.html"/>
+
+
+
+
+
+  <title>漫话浅谈-机器学习 | Mob's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-27538548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mob's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">浮生若梦，为欢几何</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.mobing.com/content/artificial-intelligence/machine-learning-explain.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mob">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mob's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                漫话浅谈-机器学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T09:54:03+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/人工智能/" itemprop="url" rel="index">
+                    <span itemprop="name">人工智能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/content/artificial-intelligence/machine-learning-explain.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="content/artificial-intelligence/machine-learning-explain.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自从google的AlphaGo战胜李世石后，机器学习，人工智能，神经网络的大潮便席卷而来，各种网络、线下媒体的狂潮热捧。理性上，大家都知道进步的意义。也都知道长远来看，人工智能的发展不仅对人类生活的方方面面都有积极意义，从根本上说，这也的确将是一个新时代的开端，引用别人的一句话：“我们走在浪潮之巅，我们可以投身其中，我们可以改变世界”。现在，让我们一起来迎接吧。<br><a id="more"></a></p>
+<h2 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h2><p>机器通过分析大量数据来进行学习。比如说，不需要通过编程来识别猫或人脸，它们可以通过使用图片来进行训练，从而归纳和识别特定的目标。机器学习正在进步，我们似乎正在不断接近我们心中的人工智能目标。语音识别、图像检测、机器翻译、风格迁移等技术已经在我们的实际生活中开始得到了应用，但机器学习的发展仍还在继续，甚至被认为有可能彻底改变人类文明的发展方向乃至人类自身。</p>
+<h3 id="机器学习和人工智能的关系"><a href="#机器学习和人工智能的关系" class="headerlink" title="机器学习和人工智能的关系"></a>机器学习和人工智能的关系</h3><p>机器学习是一种重在寻找数据中的模式并使用这些模式来做出预测的研究和算法的门类。机器学习是人工智能领域的一部分，并且和知识发现与数据挖掘有所交集。更多解读可参阅  <strong><a href="/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence.html" title="机器学习、深度学习与人工智能的区别">机器学习、深度学习与人工智能的区别</a></strong> 。</p>
+<h3 id="机器学习的工作方式"><a href="#机器学习的工作方式" class="headerlink" title="机器学习的工作方式"></a>机器学习的工作方式</h3><p>① <strong>选择数据</strong>：将你的数据分成三组：训练数据、验证数据和测试数据<br>② <strong>模型数据</strong>：使用训练数据来构建使用相关特征的模型<br>③ <strong>验证模型</strong>：使用你的验证数据接入你的模型<br>④ <strong>测试模型</strong>：使用你的测试数据检查被验证的模型的表现<br>⑤ <strong>使用模型</strong>：使用完全训练好的模型在新数据上做预测<br>⑥ <strong>调优模型</strong>：使用更多数据、不同的特征或调整过的参数来提升算法的性能表现</p>
+<h3 id="机器学习的工作领域"><a href="#机器学习的工作领域" class="headerlink" title="机器学习的工作领域"></a>机器学习的工作领域</h3><p>① <strong>传统编程</strong>：软件工程师编写程序来解决问题。首先存在一些数据→为了解决一个问题，软件工程师编写一个流程来告诉机器应该怎样做→计算机遵照这一流程执行，然后得出结果<br>② <strong>统计学</strong>：分析师比较变量之间的关系<br>③ <strong>机器学习</strong>：数据科学家使用训练数据集来教计算机应该怎么做，然后系统执行该任务。首先存在大数据→机器会学习使用训练数据集来进行分类，调节特定的算法来实现目标分类→该计算机可学习识别数据中的关系、趋势和模式<br>④ <strong>智能应用</strong>：智能应用使用人工智能所得到的结果，如图是一个精准农业的应用案例示意，该应用基于无人机所收集到的数据</p>
+<h3 id="机器学习的实际应用"><a href="#机器学习的实际应用" class="headerlink" title="机器学习的实际应用"></a>机器学习的实际应用</h3><p>机器学习有很多应用场景，这里给出了一些示例，你会怎么使用它？</p>
+<p><strong>快速三维地图测绘和建模</strong>：要建造一架铁路桥，PwC 的数据科学家和领域专家将机器学习应用到了无人机收集到的数据上。这种组合实现了工作成功中的精准监控和快速反馈。</p>
+<p><strong>增强分析以降低风险</strong>：为了检测内部交易，PwC 将机器学习和其它分析技术结合了起来，从而开发了更为全面的用户概况，并且获得了对复杂可疑行为的更深度了解。</p>
+<p><strong>预测表现最佳的目标</strong>：PwC 使用机器学习和其它分析方法来评估 Melbourne Cup 赛场上不同赛马的潜力。</p>
+<hr>
+<h2 id="机器学习的算法"><a href="#机器学习的算法" class="headerlink" title="机器学习的算法"></a>机器学习的算法</h2><p>和学习程序一样，目前的互联网开发工作中，并不要使用最复杂的算法，除非其结果值得付出昂贵的开销和资源。这里给出了一些最常见的算法，按使用简单程度排序。</p>
+<h3 id="决策树（Decision-Tree）"><a href="#决策树（Decision-Tree）" class="headerlink" title="决策树（Decision Tree）"></a>决策树（Decision Tree）</h3><p>在进行逐步应答过程中，典型的决策树分析会使用分层变量或决策节点，例如，可将一个给定用户分类成信用可靠或不可靠。</p>
+<p>优点：擅长对人、地点、事物的一系列不同特征、品质、特性进行评估<br>场景举例：基于规则的信用评估、赛马结果预测<br>扩展阅读：《教程 | 从头开始：用Python实现决策树算法》、《想了解概率图模型？你要先理解图论的基本定义与形式》</p>
+<h3 id="支持向量机（Support-Vector-Machine）"><a href="#支持向量机（Support-Vector-Machine）" class="headerlink" title="支持向量机（Support Vector Machine）"></a>支持向量机（Support Vector Machine）</h3><p>基于超平面（hyperplane），支持向量机可以对数据群进行分类。</p>
+<p>优点：支持向量机擅长在变量 X 与其它变量之间进行二元分类操作，无论其关系是否是线性的<br>场景举例：新闻分类、手写识别。<br>扩展阅读：《干货 | 详解支持向量机（附学习资源）》</p>
+<h3 id="回归（Regression）"><a href="#回归（Regression）" class="headerlink" title="回归（Regression）"></a>回归（Regression）</h3><p>回归可以勾画出因变量与一个或多个因变量之间的状态关系。在这个例子中，将垃圾邮件和非垃圾邮件进行了区分。</p>
+<p>优点：回归可用于识别变量之间的连续关系，即便这个关系不是非常明显<br>场景举例：路面交通流量分析、邮件过滤</p>
+<h3 id="朴素贝叶斯分类（Naive-Bayes-Classification）"><a href="#朴素贝叶斯分类（Naive-Bayes-Classification）" class="headerlink" title="朴素贝叶斯分类（Naive Bayes Classification）"></a>朴素贝叶斯分类（Naive Bayes Classification）</h3><p>朴素贝叶斯分类器用于计算可能条件的分支概率。每个独立的特征都是「朴素」或条件独立的，因此它们不会影响别的对象。例如，在一个装有共 5 个黄色和红色小球的罐子里，连续拿到两个黄色小球的概率是多少？从图中最上方分支可见，前后抓取两个黄色小球的概率为 1/10。朴素贝叶斯分类器可以计算多个特征的联合条件概率。</p>
+<p>优点：对于在小数据集上有显著特征的相关对象，朴素贝叶斯方法可对其进行快速分类<br>场景举例：情感分析、消费者分类</p>
+<h3 id="隐马尔可夫模型（Hidden-Markov-model）"><a href="#隐马尔可夫模型（Hidden-Markov-model）" class="headerlink" title="隐马尔可夫模型（Hidden Markov model）"></a>隐马尔可夫模型（Hidden Markov model）</h3><p>显马尔可夫过程是完全确定性的——一个给定的状态经常会伴随另一个状态。交通信号灯就是一个例子。相反，隐马尔可夫模型通过分析可见数据来计算隐藏状态的发生。随后，借助隐藏状态分析，隐马尔可夫模型可以估计可能的未来观察模式。在本例中，高或低气压的概率（这是隐藏状态）可用于预测晴天、雨天、多云天的概率。</p>
+<p>优点：容许数据的变化性，适用于识别（recognition）和预测操作<br>场景举例：面部表情分析、气象预测</p>
+<h3 id="随机森林（Random-forest）"><a href="#随机森林（Random-forest）" class="headerlink" title="随机森林（Random forest）"></a>随机森林（Random forest）</h3><p>随机森林算法通过使用多个带有随机选取的数据子集的树（tree）改善了决策树的精确性。本例在基因表达层面上考察了大量与乳腺癌复发相关的基因，并计算出复发风险。</p>
+<p>优点：随机森林方法被证明对大规模数据集和存在大量且有时不相关特征的项（item）来说很有用<br>场景举例：用户流失分析、风险评估<br>扩展阅读：《教程 | 从头开始：用 Python 实现随机森林算法》</p>
+<h3 id="循环神经网络（Recurrent-neural-network）"><a href="#循环神经网络（Recurrent-neural-network）" class="headerlink" title="循环神经网络（Recurrent neural network）"></a>循环神经网络（Recurrent neural network）</h3><p>在任意神经网络中，每个神经元都通过 1 个或多个隐藏层来将很多输入转换成单个输出。循环神经网络（RNN）会将值进一步逐层传递，让逐层学习成为可能。换句话说，RNN 存在某种形式的记忆，允许先前的输出去影响后面的输入。</p>
+<p>优点：循环神经网络在存在大量有序信息时具有预测能力<br>场景举例：图像分类与字幕添加、政治情感分析</p>
+<h3 id="长短期记忆（Long-short-term-memory，LSTM）"><a href="#长短期记忆（Long-short-term-memory，LSTM）" class="headerlink" title="长短期记忆（Long short-term memory，LSTM）"></a>长短期记忆（Long short-term memory，LSTM）</h3><p>与门控循环单元神经网络（gated recurrent unit nerual network）：早期的 RNN 形式是会存在损耗的。尽管这些早期循环神经网络只允许留存少量的早期信息，新近的长短期记忆（LSTM）与门控循环单元（GRU）神经网络都有长期与短期的记忆。换句话说，这些新近的 RNN 拥有更好的控制记忆的能力，允许保留早先的值或是当有必要处理很多系列步骤时重置这些值，这避免了「梯度衰减」或逐层传递的值的最终 degradation。LSTM 与 GRU 网络使得我们可以使用被称为「门（gate）」的记忆模块或结构来控制记忆，这种门可以在合适的时候传递或重置值。</p>
+<p>优点：长短期记忆和门控循环单元神经网络具备与其它循环神经网络一样的优点，但因为它们有更好的记忆能力，所以更常被使用<br>场景举例：自然语言处理、翻译<br>扩展阅读：《深度 | LSTM 和递归网络基础教程》和《干货 | 图解 LSTM 神经网络架构及其 11 种变体（附论文）》</p>
+<h3 id="卷积神经网络（convolutional-neural-network）"><a href="#卷积神经网络（convolutional-neural-network）" class="headerlink" title="卷积神经网络（convolutional neural network）"></a>卷积神经网络（convolutional neural network）</h3><p>卷积是指来自后续层的权重的融合，可用于标记输出层。</p>
+<p>优点：当存在非常大型的数据集、大量特征和复杂的分类任务时，卷积神经网络是非常有用的<br>场景举例：图像识别、文本转语音、药物发现<br>扩展阅读：《专栏 | 卷积神经网络简介》、《从入门到精通：卷积神经网络初学者指南》和《解析深度卷积神经网络的 14 种设计模式》机器之心icon.png</p>
+<hr>
+<h2 id="机器学习的流派"><a href="#机器学习的流派" class="headerlink" title="机器学习的流派"></a>机器学习的流派</h2><p>几十年来，人工智能研究者的各个「部落」一直以来都在彼此争夺主导权，合作和算法融合是实现真正通用人工智能（AGI）的唯一方式。这里简单整理给出了机器学习方法的五种基本流派。</p>
+<h3 id="符号主义"><a href="#符号主义" class="headerlink" title="符号主义"></a>符号主义</h3><p>使用符号、规则和逻辑来表征知识和进行逻辑推理，最喜欢的算法是：规则和决策树</p>
+<h3 id="贝叶斯派"><a href="#贝叶斯派" class="headerlink" title="贝叶斯派"></a>贝叶斯派</h3><p>获取发生的可能性来进行概率推理，最喜欢的算法是：朴素贝叶斯或马尔可夫</p>
+<h3 id="联结主义"><a href="#联结主义" class="headerlink" title="联结主义"></a>联结主义</h3><p>使用概率矩阵和加权神经元来动态地识别和归纳模式，最喜欢的算法是：神经网络</p>
+<h3 id="进化主义"><a href="#进化主义" class="headerlink" title="进化主义"></a>进化主义</h3><p>生成变化，然后为特定目标获取其中最优的，最喜欢的算法是：遗传算法</p>
+<h3 id="Analogizer"><a href="#Analogizer" class="headerlink" title="Analogizer"></a>Analogizer</h3><p>根据约束条件来优化函数（尽可能走到更高，但同时不要离开道路），最喜欢的算法是：支持向量机</p>
+<hr>
+<h2 id="机器学习的演化的阶段"><a href="#机器学习的演化的阶段" class="headerlink" title="机器学习的演化的阶段"></a>机器学习的演化的阶段</h2><h3 id="1980-年代"><a href="#1980-年代" class="headerlink" title="1980 年代"></a>1980 年代</h3><p>主导流派：符号主义<br>架构：服务器或大型机<br>主导理论：知识工程<br>基本决策逻辑：决策支持系统，实用性有限</p>
+<h3 id="1990-年代到-2000-年"><a href="#1990-年代到-2000-年" class="headerlink" title="1990 年代到 2000 年"></a>1990 年代到 2000 年</h3><p>主导流派：贝叶斯<br>架构：小型服务器集群<br>主导理论：概率论<br>分类：可扩展的比较或对比，对许多任务都足够好了</p>
+<h3 id="2010-年代早期到中期"><a href="#2010-年代早期到中期" class="headerlink" title="2010 年代早期到中期"></a>2010 年代早期到中期</h3><p>主导流派：联结主义<br>架构：大型服务器农场<br>主导理论：神经科学和概率<br>识别：更加精准的图像和声音识别、翻译、情绪分析等</p>
+<h3 id="2010-年代末期"><a href="#2010-年代末期" class="headerlink" title="2010 年代末期"></a>2010 年代末期</h3><p>主导流派：联结主义+符号主义<br>架构：许多云<br>主导理论：记忆神经网络、大规模集成、基于知识的推理<br>简单的问答：范围狭窄的、领域特定的知识共享</p>
+<h3 id="2020-年代"><a href="#2020-年代" class="headerlink" title="2020 年代+"></a>2020 年代+</h3><p>主导流派：联结主义+符号主义+贝叶斯+……<br>架构：云计算和雾计算<br>主导理论：感知的时候有网络，推理和工作的时候有规则<br>简单感知、推理和行动：有限制的自动化或人机交互</p>
+<h3 id="2040-年代"><a href="#2040-年代" class="headerlink" title="2040 年代+"></a>2040 年代+</h3><p>主导流派：算法融合<br>架构：无处不在的服务器<br>主导理论：最佳组合的元学习<br>感知和响应：基于通过多种学习方式获得的知识或经验采取行动或做出回答</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/入门/" rel="tag"># 入门</a>
+          
+            <a href="/tags/神经网络/" rel="tag"># 神经网络</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/content/artificial-intelligence/deep-learning-neural-network.html" rel="next" title="深度学习与神经网络">
+                <i class="fa fa-chevron-left"></i> 深度学习与神经网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/content/artificial-intelligence/machine-learning-deep-learning-artificial-intelligence.html" rel="prev" title="机器学习、深度学习与人工智能的区别">
+                机器学习、深度学习与人工智能的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.jpg"
+               alt="Mob" />
+          <p class="site-author-name" itemprop="name">Mob</p>
+           
+              <p class="site-description motion-element" itemprop="description">给自己一份自信，不卑不亢；给自己一份洒脱，悠然前行。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hotmob" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hotmob" target="_blank" title="Twitter" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/ammob" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是机器学习？"><span class="nav-number">1.</span> <span class="nav-text">什么是机器学习？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习和人工智能的关系"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习和人工智能的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的工作方式"><span class="nav-number">1.2.</span> <span class="nav-text">机器学习的工作方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的工作领域"><span class="nav-number">1.3.</span> <span class="nav-text">机器学习的工作领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的实际应用"><span class="nav-number">1.4.</span> <span class="nav-text">机器学习的实际应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习的算法"><span class="nav-number">2.</span> <span class="nav-text">机器学习的算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树（Decision-Tree）"><span class="nav-number">2.1.</span> <span class="nav-text">决策树（Decision Tree）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量机（Support-Vector-Machine）"><span class="nav-number">2.2.</span> <span class="nav-text">支持向量机（Support Vector Machine）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归（Regression）"><span class="nav-number">2.3.</span> <span class="nav-text">回归（Regression）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯分类（Naive-Bayes-Classification）"><span class="nav-number">2.4.</span> <span class="nav-text">朴素贝叶斯分类（Naive Bayes Classification）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐马尔可夫模型（Hidden-Markov-model）"><span class="nav-number">2.5.</span> <span class="nav-text">隐马尔可夫模型（Hidden Markov model）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机森林（Random-forest）"><span class="nav-number">2.6.</span> <span class="nav-text">随机森林（Random forest）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环神经网络（Recurrent-neural-network）"><span class="nav-number">2.7.</span> <span class="nav-text">循环神经网络（Recurrent neural network）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长短期记忆（Long-short-term-memory，LSTM）"><span class="nav-number">2.8.</span> <span class="nav-text">长短期记忆（Long short-term memory，LSTM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积神经网络（convolutional-neural-network）"><span class="nav-number">2.9.</span> <span class="nav-text">卷积神经网络（convolutional neural network）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习的流派"><span class="nav-number">3.</span> <span class="nav-text">机器学习的流派</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号主义"><span class="nav-number">3.1.</span> <span class="nav-text">符号主义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯派"><span class="nav-number">3.2.</span> <span class="nav-text">贝叶斯派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联结主义"><span class="nav-number">3.3.</span> <span class="nav-text">联结主义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进化主义"><span class="nav-number">3.4.</span> <span class="nav-text">进化主义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analogizer"><span class="nav-number">3.5.</span> <span class="nav-text">Analogizer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习的演化的阶段"><span class="nav-number">4.</span> <span class="nav-text">机器学习的演化的阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1980-年代"><span class="nav-number">4.1.</span> <span class="nav-text">1980 年代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1990-年代到-2000-年"><span class="nav-number">4.2.</span> <span class="nav-text">1990 年代到 2000 年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2010-年代早期到中期"><span class="nav-number">4.3.</span> <span class="nav-text">2010 年代早期到中期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2010-年代末期"><span class="nav-number">4.4.</span> <span class="nav-text">2010 年代末期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-年代"><span class="nav-number">4.5.</span> <span class="nav-text">2020 年代+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2040-年代"><span class="nav-number">4.6.</span> <span class="nav-text">2040 年代+</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mob</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hotmob.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://blog.mobing.com/content/artificial-intelligence/machine-learning-explain.html';
+          this.page.identifier = 'content/artificial-intelligence/machine-learning-explain.html';
+          this.page.title = '漫话浅谈-机器学习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hotmob.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
