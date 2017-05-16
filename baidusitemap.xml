@@ -4,19 +4,19 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/methodology/internet-innovation-by-step.html</loc>
-    <lastmod>2017-05-08T11:04:50.000Z</lastmod>
+    <loc>http://blog.mobing.com/content/product-community/toa-internet-community-planning.html</loc>
+    <lastmod>2017-05-16T07:43:50.000Z</lastmod>
     <data>
         <display>
-        <title>互联网产品创新四步法</title>
-        <pubTime>2017-04-17T02:20:21.000Z</pubTime>
+        <title>平安一账通社区类产品设计思路</title>
+        <pubTime>2017-05-11T08:31:14.000Z</pubTime>
         
-        <tag>方法论</tag>
+        <tag>产品设计</tag>
          
          
            
              
-              <breadCrumb title="随笔" url="http://blog.mobing.com/categories/%E9%9A%8F%E7%AC%94/"/>
+              <breadCrumb title="互联网社区" url="http://blog.mobing.com/categories/%E4%BA%92%E8%81%94%E7%BD%91%E7%A4%BE%E5%8C%BA/"/>
           
         </display>
     </data>
@@ -24,13 +24,39 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/fintech/toa-optimize-planning.html</loc>
-    <lastmod>2017-05-04T06:47:43.000Z</lastmod>
+    <loc>http://blog.mobing.com/content/product-fintech/where-is-the-road.html</loc>
+    <lastmod>2017-05-16T07:39:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何跳出互金APP同质化的怪圈</title>
+        <pubTime>2017-03-29T12:14:33.000Z</pubTime>
+        
+        <tag>产品设计</tag>
+         
+        <tag>互联网金融</tag>
+         
+        <tag>业界</tag>
+         
+         
+           
+             
+              <breadCrumb title="金融科技" url="http://blog.mobing.com/categories/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.mobing.com/content/product-fintech/toa-optimize-planning.html</loc>
+    <lastmod>2017-05-16T07:34:25.000Z</lastmod>
     <data>
         <display>
         <title>类似平安一账通类的产品应该如何做规划</title>
-        <pubTime>2017-05-04T06:44:23.000Z</pubTime>
+        <pubTime>2016-06-04T06:44:23.000Z</pubTime>
         
+        <tag>产品设计</tag>
+         
         <tag>产品规划</tag>
          
          
@@ -44,13 +70,15 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/fintech/how-to-do-app.html</loc>
-    <lastmod>2017-05-03T10:43:31.000Z</lastmod>
+    <loc>http://blog.mobing.com/content/product-fintech/how-to-do-app.html</loc>
+    <lastmod>2017-05-16T07:34:02.000Z</lastmod>
     <data>
         <display>
         <title>怎样做好互金领域的C端市场</title>
-        <pubTime>2017-04-28T09:31:42.000Z</pubTime>
+        <pubTime>2017-02-28T09:31:42.000Z</pubTime>
         
+        <tag>产品设计</tag>
+         
         <tag>互联网金融</tag>
          
         <tag>弯道超车</tag>
@@ -66,13 +94,55 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/fintech/where-is-the-road.html</loc>
-    <lastmod>2017-05-03T09:40:17.000Z</lastmod>
+    <loc>http://blog.mobing.com/content/product-community/think-in-internet-community.html</loc>
+    <lastmod>2017-05-16T07:27:51.000Z</lastmod>
     <data>
         <display>
-        <title>如何跳出互金APP同质化的怪圈</title>
-        <pubTime>2017-04-29T12:14:33.000Z</pubTime>
+        <title>移动时代，如何做好互联网社区类产品设计</title>
+        <pubTime>2017-04-29T13:23:11.000Z</pubTime>
         
+        <tag>产品设计</tag>
+         
+         
+           
+             
+              <breadCrumb title="互联网社区" url="http://blog.mobing.com/categories/%E4%BA%92%E8%81%94%E7%BD%91%E7%A4%BE%E5%8C%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.mobing.com/content/product-community/how-to-do-internet-community.html</loc>
+    <lastmod>2017-05-16T07:15:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>移动时代，如何做好互联网社区类产品设计</title>
+        <pubTime>2017-05-01T08:31:14.000Z</pubTime>
+        
+        <tag>产品设计</tag>
+         
+         
+           
+             
+              <breadCrumb title="互联网社区" url="http://blog.mobing.com/categories/%E4%BA%92%E8%81%94%E7%BD%91%E7%A4%BE%E5%8C%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.mobing.com/content/product-fintech/what-is-fintech.html</loc>
+    <lastmod>2017-05-15T08:33:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>金融科技的前世今生</title>
+        <pubTime>2016-03-27T11:13:41.000Z</pubTime>
+        
+        <tag>产品设计</tag>
+         
         <tag>互联网金融</tag>
          
         <tag>业界</tag>
@@ -81,6 +151,26 @@
            
              
               <breadCrumb title="金融科技" url="http://blog.mobing.com/categories/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.mobing.com/content/methodology/internet-innovation-by-step.html</loc>
+    <lastmod>2017-05-08T11:04:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>互联网产品创新四步法</title>
+        <pubTime>2017-04-17T02:20:21.000Z</pubTime>
+        
+        <tag>方法论</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="http://blog.mobing.com/categories/%E9%9A%8F%E7%AC%94/"/>
           
         </display>
     </data>
@@ -110,28 +200,6 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/fintech/what-is-fintech.html</loc>
-    <lastmod>2017-05-03T02:24:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>金融科技的前世今生</title>
-        <pubTime>2016-03-27T11:13:41.000Z</pubTime>
-        
-        <tag>互联网金融</tag>
-         
-        <tag>业界</tag>
-         
-         
-           
-             
-              <breadCrumb title="金融科技" url="http://blog.mobing.com/categories/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://blog.mobing.com/content/artificial-intelligence/deep-learning-neural-network.html</loc>
     <lastmod>2017-04-27T10:05:15.000Z</lastmod>
     <data>
@@ -139,13 +207,13 @@
         <title>深度学习与神经网络</title>
         <pubTime>2017-04-24T03:54:00.000Z</pubTime>
         
-        <tag>教程</tag>
-         
-        <tag>入门</tag>
-         
         <tag>神经网络</tag>
          
         <tag>深度学习</tag>
+         
+        <tag>教程</tag>
+         
+        <tag>入门</tag>
          
          
            
@@ -229,9 +297,9 @@
         
         <tag>神经网络</tag>
          
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -251,13 +319,13 @@
         <title>漫话浅谈-机器学习</title>
         <pubTime>2017-04-24T01:54:03.000Z</pubTime>
         
-        <tag>教程</tag>
-         
-        <tag>入门</tag>
-         
         <tag>神经网络</tag>
          
         <tag>机器学习</tag>
+         
+        <tag>教程</tag>
+         
+        <tag>入门</tag>
          
          
            
