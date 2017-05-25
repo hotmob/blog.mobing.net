@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）通知系统设计的原则可简单的归纳为：1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）">
+<meta name="description" content="早期的Feed流主要是把用户关注的内容以Timeline的形式展开。但是随着用户场景的丰富，Feed流也有了更多的变种。本篇文章主要讨论如何设计一个Feed流，以及Feed流背后的设计逻辑。一个Feed流永远是在解决两个核心问题：  应该展示给用户什么内容 这些内容该怎么排序">
 <meta name="keywords" content="产品设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动应用通知系统防打扰设计">
-<meta property="og:url" content="http://blog.mobing.com/content/product-community/push-optimize.html">
+<meta property="og:title" content="用策略掌控用户视线 - Feed流">
+<meta property="og:url" content="http://blog.mobing.com/content/product-community/feed-optimize.html">
 <meta property="og:site_name" content="Mob&#39;s Blog">
-<meta property="og:description" content="通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）通知系统设计的原则可简单的归纳为：1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）">
-<meta property="og:updated_time" content="2017-05-25T04:27:44.000Z">
+<meta property="og:description" content="早期的Feed流主要是把用户关注的内容以Timeline的形式展开。但是随着用户场景的丰富，Feed流也有了更多的变种。本篇文章主要讨论如何设计一个Feed流，以及Feed流背后的设计逻辑。一个Feed流永远是在解决两个核心问题：  应该展示给用户什么内容 这些内容该怎么排序">
+<meta property="og:updated_time" content="2017-05-25T05:30:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动应用通知系统防打扰设计">
-<meta name="twitter:description" content="通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）通知系统设计的原则可简单的归纳为：1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）">
+<meta name="twitter:title" content="用策略掌控用户视线 - Feed流">
+<meta name="twitter:description" content="早期的Feed流主要是把用户关注的内容以Timeline的形式展开。但是随着用户场景的丰富，Feed流也有了更多的变种。本篇文章主要讨论如何设计一个Feed流，以及Feed流背后的设计逻辑。一个Feed流永远是在解决两个核心问题：  应该展示给用户什么内容 这些内容该怎么排序">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.mobing.com/content/product-community/push-optimize.html"/>
+  <link rel="canonical" href="http://blog.mobing.com/content/product-community/feed-optimize.html"/>
 
 
 
 
 
-  <title>移动应用通知系统防打扰设计 | Mob's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>用策略掌控用户视线 - Feed流 | Mob's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -313,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.mobing.com/content/product-community/push-optimize.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.mobing.com/content/product-community/feed-optimize.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mob">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">移动应用通知系统防打扰设计</h1>
+          <h1 class="post-title" itemprop="name headline">用策略掌控用户视线 - Feed流</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T14:29:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T21:29:13+08:00">
                 2017-05-19
               </time>
             
@@ -383,9 +383,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/content/product-community/push-optimize.html#comments" itemprop="discussionUrl">
+                <a href="/content/product-community/feed-optimize.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="content/product-community/push-optimize.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="content/product-community/feed-optimize.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,23 +410,32 @@
       
 
       
-        <p>通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：<br>1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）<br>通知系统设计的原则可简单的归纳为：<br>1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）<br><a id="more"></a></p>
-<h1 id="通知合并"><a href="#通知合并" class="headerlink" title="通知合并"></a>通知合并</h1><p>通知在推送之前需要进行汇总合并，目的在于提高消息传播处理效率；减少骚扰，降低噪音；平衡服务器压力。</p>
-<h4 id="合并周期"><a href="#合并周期" class="headerlink" title="合并周期"></a>合并周期</h4><p>固定时间内的消息全部汇总（24小时内/30天等）；<br>无固定时间（只要未处理/未读即汇总）<br>当然一般都组合着用：合并24小时内未处理消息</p>
-<h4 id="分类合并"><a href="#分类合并" class="headerlink" title="分类合并"></a>分类合并</h4><p>同种类进行合并（如n条留言合并为1条）<br>同一发起人合并（如张三给你发来的n条私信）<br>同一时间周期合并（如24小时共收到n条评论）</p>
-<h1 id="通知分发"><a href="#通知分发" class="headerlink" title="通知分发"></a>通知分发</h1><p>通知按照规则汇总完成后，系统将其通过通知管道推送到用户，以便用户处理。</p>
-<h4 id="分发方式"><a href="#分发方式" class="headerlink" title="分发方式"></a>分发方式</h4><p>分发方式与Feed系统类似，多采用Push方式，即在指定时间内主动推送给用户。部分特定类型需要用户请求（Pull）拉取未读消息。 目前大部分通知优先推送未处理通知合并后的总数，已提醒用户已有新消息需要处理。用户点击数字后再去服务端请求具体的消息内容。此种方式综合考虑了成本、压力和体验。当然，某些极端情况下需要进行优化处理：如未读消息超过1000，用户请求时先推送前50条或者放入cache中等。技术童鞋会有各种手段，这里不做详述。</p>
-<h4 id="分发频率（时间）"><a href="#分发频率（时间）" class="headerlink" title="分发频率（时间）"></a>分发频率（时间）</h4><p>分发时间主要根据消息的优先级来做区隔：</p>
-<h4 id="分发管道"><a href="#分发管道" class="headerlink" title="分发管道"></a>分发管道</h4><p>分发管道即消息通知的具体推送渠道，根据业务类型可以分为：Web、App、短信、邮件等。</p>
-<h1 id="用户处理"><a href="#用户处理" class="headerlink" title="用户处理"></a>用户处理</h1><p>根据前文提到的分发方式，对于通知的处理在逻辑上可以分为两层：通知状态的处理和通知内容的处理。</p>
-<h4 id="状态的处理狭义的理解即为是否已读（已处理）。"><a href="#状态的处理狭义的理解即为是否已读（已处理）。" class="headerlink" title="状态的处理狭义的理解即为是否已读（已处理）。"></a>状态的处理狭义的理解即为是否已读（已处理）。</h4><p>通常初始数字即为系统推送过来的未读总量，用户点击数字进入相关功能列表查阅后，读取的动作完成，未读数字相应减少。</p>
-<p>有几种情况需要变通处理：</p>
-<p>若用户未读信息较多（m=100），但第一页列表只能显示（n=10）条的话，那未读数字即为m-n=90；<br>某些产品会将点击等同于已读。即用户只要点击无论是否打开列表查看均认为已读。 这样的处理一般用于重要级别较低的消息。点击即已读可有效降低骚扰。<br>某些重要级别较高的消息已处理状态可以定义为用户进行相关操作后才为已处理，而非查阅。 如用户进行评论、回复、点击忽略或点击删除等动作时才认为已处理。</p>
-<h4 id="内容的处理狭义的理解即为用户是否操作。"><a href="#内容的处理狭义的理解即为用户是否操作。" class="headerlink" title="内容的处理狭义的理解即为用户是否操作。"></a>内容的处理狭义的理解即为用户是否操作。</h4><p>根据不同消息的种类和业务的需要，操作可分为：</p>
-<p>处理：用户必须点击功能链接进行处理。如：你的密码过于简单，点此进行修改；<br>回复：如回复私信，对评论进行回复；<br>确认：对消息做出确认的反馈，如某些系统提示可设置”我已知道，不再提示”的选项；<br>忽略：用户进行忽略操作或不进行任何操作；<br>删除：用户删除本消息。</p>
-<h4 id="消息处理后的状态需要统一。"><a href="#消息处理后的状态需要统一。" class="headerlink" title="消息处理后的状态需要统一。"></a>消息处理后的状态需要统一。</h4><p>消息需要标记是否已处理的状态，且状态在不同的终端是打通的。 如：用户在客户端对消息进行了查看，在web站点本消息应自动标记为已读状态。</p>
-<h1 id="通知回收"><a href="#通知回收" class="headerlink" title="通知回收"></a>通知回收</h1><p>回收主要针对用户已处理消息的操作。</p>
-<p>用户之间触发的消息一般需要留档保存。 如评论/回复/留言/私信等。产品可提供选项询问用户是否超过一定周期自动清理。<br>在部分产品中，还需要考虑功能的优先级。 如解除好友关系或加入黑名单后自动将删除双方的私信记录。<br>系统触发的消息一般设置一定的回收删除时间。 如系统提醒、通知、公告等。过期后自动在产品里删除。物理上可以设置是否备份。<br>过期但用户未处理消息（用户长时间未登录但收到他人的回复）可以根据业务需求来处理。 如未读的私信/评论/回复永久保留等。重要未读消息可尝试二次推送或使用其他途径（邮箱、APP、短信等）通知。</p>
+        <p>早期的Feed流主要是把用户关注的内容以Timeline的形式展开。但是随着用户场景的丰富，Feed流也有了更多的变种。本篇文章主要讨论如何设计一个Feed流，以及Feed流背后的设计逻辑。<br>一个Feed流永远是在解决两个核心问题：</p>
+<ul>
+<li>应该展示给用户什么内容</li>
+<li>这些内容该怎么排序<a id="more"></a>
+</li>
+</ul>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h4 id="Timeline"><a href="#Timeline" class="headerlink" title="Timeline"></a>Timeline</h4><p>Timeline，一般而言，不对用户主动要求获取的内容进行筛选，同时所有的内容按照时间排序。最经典的案例就是朋友圈。关于Feed流设计的两个核心问题，微信朋友圈的回答是这样的：</p>
+<p>应该展示给用户什么内容：用户好友发的内容<br>这些内容该怎么排序：按照时间先后顺序<br>Timeline简单的内容选取和排序非常易于用户理解，充满了极简主义的哲学：随时更新，吸引用户随时打开使用，而每次更新的部分都有限也保证了大部分用户不会错过任何消息。微信也用这个设计，获取了用户大量的时间。</p>
+<p>既然Timeline有这么多优点，那么Feed流为什么还会迭代衍生出来其他的设计？</p>
+<p>其实这里也牵扯到一个问题，Timeline有一个致命的缺点——内容呈现效率最为低下。需要内容提供方非常克制，同时也需要用户对这些内容足够关注。</p>
+<p>微信朋友圈的内容是用户自己的个人展示，注定不会大量更新；同时选择都是基于熟人关系，能引起用户足够的关注。正是这两个原因，保证了朋友圈内容虽然效率低下，但是还是极具吸引力。如果动辄每天上千条陌生人更新的内容，使用Timeline的形式呈现出来，想见一下，这是一个多么缺乏思考的设计。</p>
+<h4 id="重力排序算法——兼顾热度和更新时间"><a href="#重力排序算法——兼顾热度和更新时间" class="headerlink" title="重力排序算法——兼顾热度和更新时间"></a>重力排序算法——兼顾热度和更新时间</h4><p>如果每天有更新量很大的Feed流，同时大部分内容没有太大用户价值，这种情况下我们该怎么排序？这个场景其实也很常见，也是一些PM在实际工作中遇到的棘手问题。答案就是重力排序算法。</p>
+<p>重力排序算法中，对于一个在Feed流中的内容而言，有两种力量：重力和拉力。重力是持续让内容往下掉的力，这个重力就是时间，因为新的内容会把老的内容刷下去；同时拉力则是让内容排序往前的力，比如知乎的赞，贴吧的回复。</p>
+<p>这样的排序算法实现方式有很多，这里可以简单介绍一种，也是来自Reddit的核心排序算法：</p>
+<p>score\left( H,T \right) =logH+ \frac{T-T_{0} }{A} </p>
+<p>其中：<br>H表示能代表内容热度的值：比如说收到的赞，比如说浏览量，也可以是综合类似的指标，加权求和得到的值。</p>
+<p>T代表内容发布的时间，T<em>{0} 代表一个时间的起始值，只要比最早发布的内容早就行了（比如用公司创立时间）。T-T</em>{0} 用来衡量一个内容的新旧程度，单位为秒，T-T_{0} 越大，则代表内容越新。</p>
+<p>A也是设立的参数，A越大，T-T_{0} 的影响力越小，则内容更新的越慢。一般而言初始值可以用36000，10个小时的秒数，后续不断迭代。</p>
+<p>关于Feed流设计的两个核心问题，重力排序算法的回答是这样的：</p>
+<p>应该展示给用户什么内容：用户表现出喜好的内容都推给用户，虽然用户不一定看得见后面的。</p>
+<p>这些内容该怎么排序：按照时间衰减因素和内容受欢迎程度综合排序。</p>
+<h4 id="智能排序——双刃剑"><a href="#智能排序——双刃剑" class="headerlink" title="智能排序——双刃剑"></a>智能排序——双刃剑</h4><p>Facebook使用智能排序之后据称效果拔群，于是我们看到越来越多的社交网络放弃使用Timeline排序，转入智能排序的阵营，国外的Twitter，国内的微博和知乎。</p>
+<p>智能排序牵扯到复杂的模型构建和机器学习，这里只阐述下简单的原理。</p>
+<p>首先，系统需要知道什么是一个内容被展示的目标值。比如微博，一个内容被展示的目标值是转发，评论，点赞的次数。那么通过大量的样本的机器学习，系统对于什么是好的内容会有一个预测。这个对于一个内容的预测，则是的智能排序的基础。<br>接下来，系统会屏蔽掉一些违规的内容，比如Facebook处罚标题党，知乎处罚抱团点赞。<br>其次，为了用户内容的质量，系统会在用户的Feed中增加一些热门的内容。<br>最后，考虑内容和用户的亲密度、系统认为内容受欢迎的程度、内容时间衰减性等因素后，系统进行综合排序。<br>听起来智能排序是一个很好的主意。但是，智能排序也是一把双刃剑。</p>
+<p>算法质量的高要求，导致一些技术比较差的公司，使用智能排序效果不佳。另一方面，因为智能排序的不透明性和扩展性，过度的商业化更是成为了用户体验的头号凶手。</p>
+<p>有的内容因为用户买了粉丝头条而可以排在Feed流前面，有的内容只要有足够的推广费，可以绕过关注关系，呈现在用户面前。智能排序如果被过度商业化，那么Feed流的用户体验也会越来越差。</p>
 
       
     </div>
@@ -469,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/content/product-community/toa-internet-community-planning.html" rel="next" title="平安一账通社区类产品设计思路">
-                <i class="fa fa-chevron-left"></i> 平安一账通社区类产品设计思路
+              <a href="/content/product-community/push-optimize.html" rel="next" title="移动应用通知系统防打扰设计">
+                <i class="fa fa-chevron-left"></i> 移动应用通知系统防打扰设计
               </a>
             
           </div>
@@ -478,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/content/product-community/feed-optimize.html" rel="prev" title="用策略掌控用户视线 - Feed流">
-                用策略掌控用户视线 - Feed流 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -676,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通知合并"><span class="nav-number">1.</span> <span class="nav-text">通知合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#合并周期"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">合并周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类合并"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">分类合并</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通知分发"><span class="nav-number">2.</span> <span class="nav-text">通知分发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分发方式"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">分发方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分发频率（时间）"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">分发频率（时间）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分发管道"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">分发管道</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户处理"><span class="nav-number">3.</span> <span class="nav-text">用户处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态的处理狭义的理解即为是否已读（已处理）。"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">状态的处理狭义的理解即为是否已读（已处理）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容的处理狭义的理解即为用户是否操作。"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">内容的处理狭义的理解即为用户是否操作。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息处理后的状态需要统一。"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">消息处理后的状态需要统一。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通知回收"><span class="nav-number">4.</span> <span class="nav-text">通知回收</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Timeline"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Timeline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重力排序算法——兼顾热度和更新时间"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">重力排序算法——兼顾热度和更新时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能排序——双刃剑"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">智能排序——双刃剑</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -819,9 +824,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://blog.mobing.com/content/product-community/push-optimize.html';
-          this.page.identifier = 'content/product-community/push-optimize.html';
-          this.page.title = '移动应用通知系统防打扰设计';
+          this.page.url = 'http://blog.mobing.com/content/product-community/feed-optimize.html';
+          this.page.identifier = 'content/product-community/feed-optimize.html';
+          this.page.title = '用策略掌控用户视线 - Feed流';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://hotmob.disqus.com/embed.js';
