@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.mobing.com/"/>
-  <updated>2017-05-16T07:43:50.000Z</updated>
+  <updated>2017-05-25T04:06:51.000Z</updated>
   <id>http://blog.mobing.com/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>移动应用通知系统防打扰设计</title>
+    <link href="http://blog.mobing.com/content/product-community/push-optimize.html"/>
+    <id>http://blog.mobing.com/content/product-community/push-optimize.html</id>
+    <published>2017-05-19T06:29:13.000Z</published>
+    <updated>2017-05-25T04:06:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：<br>1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）<br>通知系统设计的原则可简单的归纳为：<br>1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）<br><a id="more"></a></p>
+<h2 id="通知合并"><a href="#通知合并" class="headerlink" title="通知合并"></a>通知合并</h2><p>通知在推送之前需要进行汇总合并，目的在于提高消息传播处理效率；减少骚扰，降低噪音；平衡服务器压力。</p>
+<h3 id="合并周期："><a href="#合并周期：" class="headerlink" title="合并周期："></a>合并周期：</h3><p>固定时间内的消息全部汇总（24小时内/30天等）；<br>无固定时间（只要未处理/未读即汇总）<br>当然一般都组合着用：合并24小时内未处理消息</p>
+<h3 id="分类合并"><a href="#分类合并" class="headerlink" title="分类合并"></a>分类合并</h3><p>同种类进行合并（如n条留言合并为1条）<br>同一发起人合并（如张三给你发来的n条私信）<br>同一时间周期合并（如24小时共收到n条评论）</p>
+<h2 id="通知分发"><a href="#通知分发" class="headerlink" title="通知分发"></a>通知分发</h2><p>通知按照规则汇总完成后，系统将其通过通知管道推送到用户，以便用户处理。</p>
+<h3 id="分发方式"><a href="#分发方式" class="headerlink" title="分发方式"></a>分发方式</h3><p>分发方式与Feed系统类似，多采用Push方式，即在指定时间内主动推送给用户。部分特定类型需要用户请求（Pull）拉取未读消息。 目前大部分通知优先推送未处理通知合并后的总数，已提醒用户已有新消息需要处理。用户点击数字后再去服务端请求具体的消息内容。此种方式综合考虑了成本、压力和体验。当然，某些极端情况下需要进行优化处理：如未读消息超过1000，用户请求时先推送前50条或者放入cache中等。技术童鞋会有各种手段，这里不做详述。</p>
+<h3 id="分发频率（时间）"><a href="#分发频率（时间）" class="headerlink" title="分发频率（时间）"></a>分发频率（时间）</h3><p>分发时间主要根据消息的优先级来做区隔：</p>
+<h3 id="分发管道"><a href="#分发管道" class="headerlink" title="分发管道"></a>分发管道</h3><p>分发管道即消息通知的具体推送渠道，根据业务类型可以分为：Web、App、短信、邮件等。</p>
+<h2 id="用户处理"><a href="#用户处理" class="headerlink" title="用户处理"></a>用户处理</h2><p>根据前文提到的分发方式，对于通知的处理在逻辑上可以分为两层：通知状态的处理和通知内容的处理。</p>
+<h3 id="状态的处理狭义的理解即为是否已读（已处理）。"><a href="#状态的处理狭义的理解即为是否已读（已处理）。" class="headerlink" title="状态的处理狭义的理解即为是否已读（已处理）。"></a>状态的处理狭义的理解即为是否已读（已处理）。</h3><p>通常初始数字即为系统推送过来的未读总量，用户点击数字进入相关功能列表查阅后，读取的动作完成，未读数字相应减少。</p>
+<p>有几种情况需要变通处理：</p>
+<p>若用户未读信息较多（m=100），但第一页列表只能显示（n=10）条的话，那未读数字即为m-n=90；<br>某些产品会将点击等同于已读。即用户只要点击无论是否打开列表查看均认为已读。 这样的处理一般用于重要级别较低的消息。点击即已读可有效降低骚扰。<br>某些重要级别较高的消息已处理状态可以定义为用户进行相关操作后才为已处理，而非查阅。 如用户进行评论、回复、点击忽略或点击删除等动作时才认为已处理。</p>
+<h3 id="内容的处理狭义的理解即为用户是否操作。"><a href="#内容的处理狭义的理解即为用户是否操作。" class="headerlink" title="内容的处理狭义的理解即为用户是否操作。"></a>内容的处理狭义的理解即为用户是否操作。</h3><p>根据不同消息的种类和业务的需要，操作可分为：</p>
+<p>处理：用户必须点击功能链接进行处理。如：你的密码过于简单，点此进行修改；<br>回复：如回复私信，对评论进行回复；<br>确认：对消息做出确认的反馈，如某些系统提示可设置”我已知道，不再提示”的选项；<br>忽略：用户进行忽略操作或不进行任何操作；<br>删除：用户删除本消息。</p>
+<h3 id="消息处理后的状态需要统一。"><a href="#消息处理后的状态需要统一。" class="headerlink" title="消息处理后的状态需要统一。"></a>消息处理后的状态需要统一。</h3><p>消息需要标记是否已处理的状态，且状态在不同的终端是打通的。 如：用户在客户端对消息进行了查看，在web站点本消息应自动标记为已读状态。</p>
+<h2 id="通知回收"><a href="#通知回收" class="headerlink" title="通知回收"></a>通知回收</h2><p>回收主要针对用户已处理消息的操作。</p>
+<p>用户之间触发的消息一般需要留档保存。 如评论/回复/留言/私信等。产品可提供选项询问用户是否超过一定周期自动清理。<br>在部分产品中，还需要考虑功能的优先级。 如解除好友关系或加入黑名单后自动将删除双方的私信记录。<br>系统触发的消息一般设置一定的回收删除时间。 如系统提醒、通知、公告等。过期后自动在产品里删除。物理上可以设置是否备份。<br>过期但用户未处理消息（用户长时间未登录但收到他人的回复）可以根据业务需求来处理。 如未读的私信/评论/回复永久保留等。重要未读消息可尝试二次推送或使用其他途径（邮箱、APP、短信等）通知。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通知系统，顾名思义即通知信息的传达处理系统。目的是为了让用户获得需要得到的消息及提醒并进行处理。这里的“需要得到”有两层意思：&lt;br&gt;1、用户彼此互动触发的信息流（留言、评论或者回复、私信等） 2、网站希望用户了解关注的信息（系统公告等）&lt;br&gt;通知系统设计的原则可简单的归纳为：&lt;br&gt;1、消息传播效率最高（获取、处理、信息传达、用户反馈等效率） 2、避免产生骚扰（噪音、频繁提示）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="互联网社区" scheme="http://blog.mobing.com/categories/%E4%BA%92%E8%81%94%E7%BD%91%E7%A4%BE%E5%8C%BA/"/>
+    
+    
+      <category term="产品设计" scheme="http://blog.mobing.com/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>平安一账通社区类产品设计思路</title>
     <link href="http://blog.mobing.com/content/product-community/toa-internet-community-planning.html"/>
     <id>http://blog.mobing.com/content/product-community/toa-internet-community-planning.html</id>
     <published>2017-05-11T08:31:14.000Z</published>
-    <updated>2017-05-16T07:43:50.000Z</updated>
+    <updated>2017-05-25T04:06:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>先分解下目前新版一账通的结构，理清产品定位与思路。<br><a id="more"></a></p>
 ]]></content>
@@ -2085,82 +2124,6 @@
     <summary type="html">
     
       &lt;p&gt;德古拉城堡中我们将会遇到骨龙，这里小编就为大家介绍如何在这个关卡中应付众多的小怪和BOSS。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="不思议迷宫" scheme="http://blog.mobing.com/categories/%E4%B8%8D%E6%80%9D%E8%AE%AE%E8%BF%B7%E5%AE%AB/"/>
-    
-    
-      <category term="游戏攻略" scheme="http://blog.mobing.com/tags/%E6%B8%B8%E6%88%8F%E6%94%BB%E7%95%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不思议迷宫（地下城物语）攻略 - 血腥要塞</title>
-    <link href="http://blog.mobing.com/content/gumballs-dungeons/strategy-bloody-fortress.html"/>
-    <id>http://blog.mobing.com/content/gumballs-dungeons/strategy-bloody-fortress.html</id>
-    <published>2017-02-25T08:37:59.000Z</published>
-    <updated>2017-04-20T09:57:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>血腥要塞开局前可以带增加信仰的药水，关卡装备收集六套一次升级满，比较要注意的是BOSS会免疫一阶的魔法，此外没有物理抗性。<br><a id="more"></a></p>
-<h2 id="推荐套路"><a href="#推荐套路" class="headerlink" title="推荐套路"></a>推荐套路</h2><p><strong>佐罗</strong>(出战)+<strong>虫族女王</strong>+<strong>斯巴达</strong>（传奇+毁灭+大铸剑师）</p>
-<p>铁血+吸血鬼+巫妖王<br>灯神史莱姆+奥丁+任意</p>
-<p>药剂：精灵药剂<br>神器：光辉圣骑士铠甲(主要降低敌人攻击就行)</p>
-<h2 id="产出英雄"><a href="#产出英雄" class="headerlink" title="产出英雄"></a>产出英雄</h2><p>巫妖王冈布奥：献祭半身巫妖雕像到十级获得弗利安米尔的魂匣，别用掉，留着等50层以后遇到残破的巫妖雕像献祭获得巫妖王。(提示：半身巫妖要献祭到20级)</p>
-<h2 id="产出神器"><a href="#产出神器" class="headerlink" title="产出神器"></a>产出神器</h2><ul>
-<li>异界游侠护符</li>
-<li>地域战神指环</li>
-<li>元素领主手套</li>
-</ul>
-<h2 id="要点注释"><a href="#要点注释" class="headerlink" title="要点注释"></a>要点注释</h2><ul>
-<li>前期进去先弄一套吸血装：地狱蹄鞋+梦魇之翼+蝎狮的心脏;(这套前期过度不错)</li>
-<li>前期打BOSS可以换这套：巫妖的指轮+巫妖护符+巫妖的魂匣;</li>
-</ul>
-<h2 id="头领打法"><a href="#头领打法" class="headerlink" title="头领打法"></a>头领打法</h2><p>BOSS免疫一阶魔法，所以，前期累积高阶魔法卷轴是很关键的，前期不要浪费卷轴打。</p>
-<hr>
-<table>
-<thead>
-<tr>
-<th>主线地图</th>
-<th>主线地图</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-adventurer-forest.html" title="冒险者之森 adventurer's forest">冒险者之森 adventurer's forest</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-hero-village.html" title="英雄之村 hero's village">英雄之村 hero's village</a></td>
-</tr>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-lost-temple.html" title="遗落祭坛 lost temple">遗落祭坛 lost temple</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-borderland.html" title="废弃边陲 borderland">废弃边陲 borderland</a></td>
-</tr>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-ancient-arena.html" title="古代竞技场 ancient arena">古代竞技场 ancient arena</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-forest-of-whispers.html" title="低语之森 forest of whispers">低语之森 forest of whispers</a></td>
-</tr>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-saint-tower.html" title="圣者之塔 saint's tower">圣者之塔 saint's tower</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-desert-oasis.html" title="沙漠绿洲 desert oasis">沙漠绿洲 desert oasis</a></td>
-</tr>
-<tr>
-<td><strong>血腥要塞</strong> bloody fortress</td>
-<td><a href="/content/gumballs-dungeons/strategy-dracula-castle.html" title="德古拉城堡 dracula's castle">德古拉城堡 dracula's castle</a></td>
-</tr>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-pirate-port.html" title="海贼港 pirate's port">海贼港 pirate's port</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-skeleton-island.html" title="骷髅岛 skeleton island">骷髅岛 skeleton island</a></td>
-</tr>
-<tr>
-<td><a href="/content/gumballs-dungeons/strategy-avallon-fortress.html" title="阿瓦隆要塞 avallon fortress">阿瓦隆要塞 avallon fortress</a></td>
-<td><a href="/content/gumballs-dungeons/strategy-city-of-steam.html" title="蒸汽之都 city of steam">蒸汽之都 city of steam</a></td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;血腥要塞开局前可以带增加信仰的药水，关卡装备收集六套一次升级满，比较要注意的是BOSS会免疫一阶的魔法，此外没有物理抗性。&lt;br&gt;
     
     </summary>
     
