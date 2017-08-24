@@ -4,6 +4,43 @@
 
     
   <url>
+    <loc>http://blog.mobing.com/content/product-fintech/toa-optimize-planning.html</loc>
+    <lastmod>2017-08-24T07:21:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>类似平安一账通类的产品应该如何做规划</title>
+        <pubTime>2016-06-04T06:44:23.000Z</pubTime>
+        
+        <tag>产品设计</tag>
+         
+        <tag>产品规划</tag>
+         
+         
+           
+             
+              <breadCrumb title="金融科技" url="http://blog.mobing.com/categories/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.mobing.com/content/product-fintech/toa-optimize-planning.html</loc>
+    <lastmod>2017-08-24T07:10:07.000Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-08-24T07:10:07.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.mobing.com/content/product-community/feed-optimize.html</loc>
     <lastmod>2017-05-25T05:30:40.000Z</lastmod>
     <data>
@@ -152,28 +189,6 @@
 
     
   <url>
-    <loc>http://blog.mobing.com/content/product-fintech/toa-optimize-planning.html</loc>
-    <lastmod>2017-05-16T07:34:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>类似平安一账通类的产品应该如何做规划</title>
-        <pubTime>2016-06-04T06:44:23.000Z</pubTime>
-        
-        <tag>产品设计</tag>
-         
-        <tag>产品规划</tag>
-         
-         
-           
-             
-              <breadCrumb title="金融科技" url="http://blog.mobing.com/categories/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://blog.mobing.com/content/product-fintech/how-to-do-app.html</loc>
     <lastmod>2017-05-16T07:34:02.000Z</lastmod>
     <data>
@@ -291,13 +306,13 @@
         <title>深度学习与神经网络</title>
         <pubTime>2017-04-24T03:54:00.000Z</pubTime>
         
-        <tag>神经网络</tag>
-         
-        <tag>深度学习</tag>
-         
         <tag>教程</tag>
          
         <tag>入门</tag>
+         
+        <tag>神经网络</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -381,9 +396,9 @@
         
         <tag>神经网络</tag>
          
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -403,13 +418,13 @@
         <title>漫话浅谈-机器学习</title>
         <pubTime>2017-04-24T01:54:03.000Z</pubTime>
         
-        <tag>神经网络</tag>
-         
-        <tag>机器学习</tag>
-         
         <tag>教程</tag>
          
         <tag>入门</tag>
+         
+        <tag>神经网络</tag>
+         
+        <tag>机器学习</tag>
          
          
            
